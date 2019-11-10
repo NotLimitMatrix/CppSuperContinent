@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Reference.cpp \
+    controller.cpp \
     main.cpp \
     mainwindow.cpp \
     resource.cpp
 
 HEADERS += \
     Reference.h \
+    controller.h \
     mainwindow.h \
     resource.h \
 

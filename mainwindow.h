@@ -3,21 +3,24 @@
 
 #include <QMainWindow>
 
-#include <iostream>
 #include <QPushButton>
 #include <QtCore>
 #include <QTextBrowser>
 #include <QRect>
 #include <QTableWidget>
 #include <QHeaderView>
+#include <QListWidget>
 #include <QLabel>
+#include <QPainter>
+#include <QPaintEvent>
 
 #include "Reference.h"
+#include "resource.h"
+#include "controller.h"
 
-typedef QMap<QString, QPushButton>  STRING_BUTTON_DICT;
-typedef QMap<QString, STRING_BUTTON_DICT> STRING_SBUTTON_DICT;
 typedef QList<QPushButton*> BUTTON_LIST;
 typedef QList<QLabel*> LABEL_LIST;
+typedef QList<Resource*> RESOURCE_LIST;
 
 class MainWindow : public QWidget
 {
@@ -32,9 +35,10 @@ private:
     BUTTON_LIST setRateButtonList;
     BUTTON_LIST transformResearchList;
 
-    //STRING_SBUTTON_DICT technologistsButtons;
-    //STRING_BUTTON_DICT technologistsLabels;
+    QListWidget* waitSelectList;
 
+    QThread* backendLoop;
+    Controller* backendController;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -48,5 +52,10 @@ public:
     void initTechnologyLabel();
     void initSetRateButtonList();
     void initTransformResearchList();
+    void initWaitSelectList();
+    void initTextBrowser();
+    void initGameLoop();
+
+    void paintEvent(QPaintEvent *event);
 };
 #endif // MAINWINDOW_H

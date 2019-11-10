@@ -3,13 +3,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent)
 {
+
     init();
-    initResourcePanel();
-    initTechnologyPanel();
-    initZoningButtons();
-    initTechnologyLabel();
-    initSetRateButtonList();
-    initTransformResearchList();
 
     show();
 }
@@ -26,8 +21,33 @@ void MainWindow::init()
     setMaximumSize(QSize(1000,600));
     setWindowTitle("Super Continent");
 
-    textBrowser = new QTextBrowser(this);
-    textBrowser->setGeometry(QRect(850, 315, 148, 285));
+    initResourcePanel();
+    initTechnologyPanel();
+    initZoningButtons();
+    initTechnologyLabel();
+    initSetRateButtonList();
+    initTransformResearchList();
+    initWaitSelectList();
+    initTextBrowser();
+}
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter *painter = new QPainter();
+    painter->begin(this);
+
+    int START = 1, END = 600 + START;
+    int BLOCK_SIZE = 20;
+
+    int TEMP = 0;
+
+    for(int i=0; i<=30; i++)
+    {
+        TEMP = START + i * BLOCK_SIZE;
+        painter->drawLine(START, TEMP, END, TEMP);
+        painter->drawLine(TEMP, START, TEMP, END);
+    }
+    painter->end();
 }
 
 QTableWidget *MainWindow::generateTableWidget(int row, int col, int h_size, int v_size)
@@ -140,4 +160,23 @@ void MainWindow::initTransformResearchList()
         b->setText("T");
         transformResearchList.append(b);
     }
+}
+
+void MainWindow::initWaitSelectList()
+{
+    waitSelectList = new QListWidget(this);
+    waitSelectList->setGeometry(607, 250, 237, 348);
+}
+
+void MainWindow::initTextBrowser()
+{
+    textBrowser = new QTextBrowser(this);
+    textBrowser->setGeometry(QRect(850, 315, 148, 283));
+}
+
+void MainWindow::initGameLoop()
+{
+    backendController = new Controller();
+    backendLoop = new QThread();
+    backendController->moveToThread(backendLoop);
 }

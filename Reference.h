@@ -1,23 +1,19 @@
 #ifndef REFERENCE_H
 #define REFERENCE_H
 
-#include <iostream>
-#include <string>
-#include <map>
-
 #include <QString>
 #include <QMap>
+#include <iostream>
+#include <QObject>
+#include <QList>
+#include <QThread>
 
 #define SPEED 2
-#define TIME_FLOW (1/SPEED)
+#define TIME_FLOW (1000/SPEED)
 #define DEFAULT_MAX 50000
 
 namespace Reference {
-
 QString displayNumberWithUnit(int number);
-
-
 }
-
 
 #endif // REFERENCE_H
