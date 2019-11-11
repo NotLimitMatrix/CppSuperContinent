@@ -20,13 +20,15 @@ SOURCES += \
     controller.cpp \
     main.cpp \
     mainwindow.cpp \
-    resource.cpp
+    resource.cpp \
+    resourcepanel.cpp
 
 HEADERS += \
     Reference.h \
     controller.h \
     mainwindow.h \
-    resource.h \
+    resource.h \ \
+    resourcepanel.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

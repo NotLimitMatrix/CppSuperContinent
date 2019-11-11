@@ -15,16 +15,16 @@
 #include <QPaintEvent>
 
 #include "Reference.h"
-#include "resource.h"
+#include "resourcepanel.h"
 #include "controller.h"
 
 typedef QList<QPushButton*> BUTTON_LIST;
 typedef QList<QLabel*> LABEL_LIST;
-typedef QList<Resource*> RESOURCE_LIST;
 
 class MainWindow : public QWidget
 {
     Q_OBJECT
+    QThread workerThread;
 private:
     QTextBrowser* textBrowser;
     QTableWidget* resourcePanel;
@@ -34,11 +34,9 @@ private:
     LABEL_LIST technologyLabels;
     BUTTON_LIST setRateButtonList;
     BUTTON_LIST transformResearchList;
-
     QListWidget* waitSelectList;
 
-    QThread* backendLoop;
-    Controller* backendController;
+    Controller* worker;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -56,6 +54,13 @@ public:
     void initTextBrowser();
     void initGameLoop();
 
+    // Overwrite functions
     void paintEvent(QPaintEvent *event);
+
+    // Slots functions
+public slots:
+    void updateResourcePanel(ResourcePanel rp);
+signals:
+
 };
 #endif // MAINWINDOW_H

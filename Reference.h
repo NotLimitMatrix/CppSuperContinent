@@ -7,6 +7,8 @@
 #include <QObject>
 #include <QList>
 #include <QThread>
+#include <QMetaType>
+#include <QtDebug>
 
 #define SPEED 2
 #define TIME_FLOW (1000/SPEED)

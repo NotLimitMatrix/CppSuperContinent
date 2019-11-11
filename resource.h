@@ -3,7 +3,6 @@
 
 #include "Reference.h"
 
-
 class Resource
 {
 private:
@@ -22,11 +21,9 @@ public:
     int getMonthly();
     QString displayStore();
     QString displayMonthly();
-    void storeAdd(int number);
-    void storeSub(int number);
-    void monthlyAdd(int number);
-    void monthlySub(int number);
+    void storeUpdate(int number);
+    void monthlyUpdate(int number);
 };
 
-
+typedef QList<Resource*> RESOURCE_LIST;
 #endif // RESOURCE_H

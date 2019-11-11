@@ -3,15 +3,17 @@
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent)
 {
-
+    //qRegisterMetaType<RESOURCE_LIST>("RESOURCE_LIST");
     init();
-
+    initGameLoop();
     show();
 }
 
 MainWindow::~MainWindow()
 {
-
+    worker->noStop = false;
+    workerThread.quit();
+    workerThread.wait();
 }
 
 void MainWindow::init()
@@ -50,6 +52,24 @@ void MainWindow::paintEvent(QPaintEvent *event)
     painter->end();
 }
 
+void MainWindow::updateResourcePanel(ResourcePanel rp)
+{
+    rp.getFood();
+    /*
+    resourcePanel->item(0, 1)->setText(rp->getEnergy()->displayStore());
+    resourcePanel->item(0, 2)->setText(rp->getEnergy()->displayMonthly());
+    resourcePanel->item(1, 1)->setText(rp->getMineral()->displayStore());
+    resourcePanel->item(1, 2)->setText(rp->getMineral()->displayMonthly());
+    resourcePanel->item(2, 1)->setText(rp->getFood()->displayStore());
+    resourcePanel->item(2, 2)->setText(rp->getFood()->displayMonthly());
+    resourcePanel->item(3, 1)->setText(rp->getConsumerGoods()->displayStore());
+    resourcePanel->item(3, 2)->setText(rp->getConsumerGoods()->displayMonthly());
+    resourcePanel->item(4, 1)->setText(rp->getAlloys()->displayStore());
+    resourcePanel->item(4, 2)->setText(rp->getAlloys()->displayMonthly());
+    */
+    update();
+}
+
 QTableWidget *MainWindow::generateTableWidget(int row, int col, int h_size, int v_size)
 {
     QTableWidget *table = new QTableWidget(this);
@@ -72,7 +92,10 @@ QTableWidget *MainWindow::generateTableWidget(int row, int col, int h_size, int 
         for(int c=0; c<col; c++)
         {
             QTableWidgetItem *item = new QTableWidgetItem();
+            QFont itemFont;
+            itemFont.setPixelSize(11);
             item->setTextAlignment(Qt::AlignCenter);
+            item->setFont(itemFont);
             table->setItem(r,c,item);
         }
 
@@ -87,6 +110,7 @@ void MainWindow::initResourcePanel()
     for(int r=0; r<5; r++)
     {
         QTableWidgetItem *item = resourcePanel->item(r, 0);
+        QFont itemFont;
         item->setText(panels[r]);
     }
 }
@@ -176,7 +200,11 @@ void MainWindow::initTextBrowser()
 
 void MainWindow::initGameLoop()
 {
-    backendController = new Controller();
-    backendLoop = new QThread();
-    backendController->moveToThread(backendLoop);
+    worker = new Controller();
+
+    worker->moveToThread(&workerThread);
+    QObject::connect(&workerThread,&QThread::finished, worker, &QObject::deleteLater);
+    QObject::connect(&workerThread, SIGNAL(started()), worker, SLOT(doWork()));
+    QObject::connect(worker, &Controller::sendResourcePanel, this, &MainWindow::updateResourcePanel);
+    workerThread.start();
 }

@@ -2,25 +2,25 @@
 #define CONTROLLER_H
 
 #include "Reference.h"
-#include "resource.h"
-
-typedef QList<Resource*> RESOURCE_LIST;
+#include "resourcepanel.h"
 
 class Controller : public QObject
 {
     Q_OBJECT
 
+    RESOURCE_LIST resourceList;
+
 public:
     explicit Controller(QObject *parent = nullptr);
-    void gameLoop();
 
-    RESOURCE_LIST processResourcePanel(RESOURCE_LIST resourcesList);
-
-signals:
-    static void sendResourcePanel(RESOURCE_LIST& resourcePanel);
+    ResourcePanel *rp;
+    bool noStop;
 
 public slots:
+    void doWork();
 
+signals:
+    void sendResourcePanel(ResourcePanel rp);
 };
 
 #endif // CONTROLLER_H

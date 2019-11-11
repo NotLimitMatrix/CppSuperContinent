@@ -33,27 +33,17 @@ QString Resource::displayMonthly()
     return neg + display_number;
 }
 
-void Resource::storeAdd(int number)
+void Resource::storeUpdate(int number)
 {
     _store += number;
-    if(_store > DEFAULT_MAX)
-        _store = DEFAULT_MAX;
-}
-
-void Resource::storeSub(int number)
-{
-    _store -= number;
+    if(_store > _max)
+        _store = _max;
     if(_store < 0)
         _store = 0;
 }
 
-void Resource::monthlyAdd(int number)
+void Resource::monthlyUpdate(int number)
 {
     _monthly += number;
-}
-
-void Resource::monthlySub(int number)
-{
-    _monthly -= number;
 }
 
