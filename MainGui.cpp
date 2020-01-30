@@ -22,6 +22,7 @@ void MainGui::paintEvent(QPaintEvent *event)
     _zoning->draw(painter);
     _wait_select->draw(painter);
     _resource_panel->draw(painter);
+    _power_panel->draw(painter);
 
     painter->end();
 }

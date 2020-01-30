@@ -15,8 +15,8 @@ public:
     QString _storage[5] = {"0","0","0","0","0"};
 
     int d_energy = 0;
-    int d_mineral = -2;
-    int d_food = -1;
+    int d_mineral = 0;
+    int d_food = 0;
     int d_alloys = 0;
     int d_consumer_goods = 0;
     QString _daily[5] = {"+0","+0","+0","+0","+0"};

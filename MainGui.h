@@ -7,6 +7,7 @@
 #include"GUI_zoning.h"
 #include"GUI_select.h"
 #include"GUI_resource_panel.h"
+#include"GUI_power_panel.h"
 
 class MainGui : public QMainWindow
 {
@@ -18,6 +19,7 @@ class MainGui : public QMainWindow
     GUI_zoning *_zoning = new GUI_zoning(_zoning_number);
     GUI_select *_wait_select = new GUI_select;
     GUI_resource_panel *_resource_panel = new GUI_resource_panel;
+    GUI_power_panel *_power_panel = new GUI_power_panel;
 
 public:
     MainGui(QWidget *parent = nullptr);
