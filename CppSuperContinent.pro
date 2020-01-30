@@ -16,11 +16,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    GUI_power_panel.cpp \
+    GUI_resource_panel.cpp \
+    GUI_select.cpp \
+    GUI_world.cpp \
+    GUI_zoning.cpp \
     main.cpp \
     MainGui.cpp
 
 HEADERS += \
     Core.h \
+    GUI_power_panel.h \
+    GUI_resource_panel.h \
+    GUI_select.h \
+    GUI_world.h \
+    GUI_zoning.h \
     MainGui.h
 
 # Default rules for deployment.
