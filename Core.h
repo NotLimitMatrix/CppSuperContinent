@@ -47,13 +47,13 @@ const int RESOURCE_PANEL_END_X  = RESOURCE_PANEL_START_X + RESOURCE_PANEL_WIDTH;
 const int RESOURCE_PANEL_END_Y  = RESOURCE_PANEL_START_Y + RESOURCE_PANEL_HEIGHT;
 const int RESOURCE_PANEL_H_SIZE = 20;
 
-static QString formatNumber(int number)
+static QString displayNumber(int number)
 {
     if(number > 100000000)
         return "1G";
 
     if(number < 0)
-        return "-"+formatNumber(-number);
+        return "-"+displayNumber(-number);
 
     if(number<1000)
         return QString::number(number);

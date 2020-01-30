@@ -28,18 +28,18 @@ void GUI_resource_panel::draw(QPainter *painter)
 
 void GUI_resource_panel::updateStorageList()
 {
-    _storage[0] = formatNumber(energy);
-    _storage[1] = formatNumber(mineral);
-    _storage[2] = formatNumber(food);
-    _storage[3] = formatNumber(alloys);
-    _storage[4] = formatNumber(consumer_goods);
+    _storage[0] = displayNumber(energy);
+    _storage[1] = displayNumber(mineral);
+    _storage[2] = displayNumber(food);
+    _storage[3] = displayNumber(alloys);
+    _storage[4] = displayNumber(consumer_goods);
 }
 
 void GUI_resource_panel::updateDailyList()
 {
-    _daily[0] = formatNumber(d_energy);
-    _daily[1] = formatNumber(d_mineral);
-    _daily[2] = formatNumber(d_food);
-    _daily[3] = formatNumber(d_alloys);
-    _daily[4] = formatNumber(d_consumer_goods);
+    _daily[0] = displayNumber(d_energy);
+    _daily[1] = displayNumber(d_mineral);
+    _daily[2] = displayNumber(d_food);
+    _daily[3] = displayNumber(d_alloys);
+    _daily[4] = displayNumber(d_consumer_goods);
 }
