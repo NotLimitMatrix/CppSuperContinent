@@ -8,6 +8,8 @@
 #include"GUI_select.h"
 #include"GUI_resource_panel.h"
 #include"GUI_power_panel.h"
+#include"GUI_research_panel.h"
+#include"GUI_text.h"
 
 class MainGui : public QMainWindow
 {
@@ -20,6 +22,8 @@ class MainGui : public QMainWindow
     GUI_select *_wait_select = new GUI_select;
     GUI_resource_panel *_resource_panel = new GUI_resource_panel;
     GUI_power_panel *_power_panel = new GUI_power_panel;
+    GUI_research_panel *_research_panel = new GUI_research_panel;
+    GUI_text *_text_browser = new GUI_text;
 
 public:
     MainGui(QWidget *parent = nullptr);

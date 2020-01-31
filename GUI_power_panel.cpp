@@ -11,6 +11,7 @@ void GUI_power_panel::draw(QPainter *painter)
 {
     updatePowser();
 
+    painter->setBrush(Qt::white);
     for(int i=0; i<3; i++)
     {
         QRect rTitle(POWER_PANEL_START_X, POWER_PANEL_START_Y + i * POWER_PANEL_H_SIZE,

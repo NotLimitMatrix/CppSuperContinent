@@ -23,6 +23,8 @@ void MainGui::paintEvent(QPaintEvent *event)
     _wait_select->draw(painter);
     _resource_panel->draw(painter);
     _power_panel->draw(painter);
+    _research_panel->draw(painter);
+    _text_browser->draw(painter);
 
     painter->end();
 }

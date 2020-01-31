@@ -10,6 +10,7 @@ void GUI_resource_panel::draw(QPainter *painter)
     updateStorageList();
     updateDailyList();
 
+    painter->setBrush(Qt::white);
     for(int i=0; i<=4; i++)
     {
         QRect rTitle(RESOURCE_PANEL_START_X, RESOURCE_PANEL_START_Y + i * RESOURCE_PANEL_H_SIZE, 40, 20);

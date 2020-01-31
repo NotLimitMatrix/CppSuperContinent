@@ -8,11 +8,29 @@
 #include<QMainWindow>
 #include<QDebug>
 
+static QString displayNumber(int number)
+{
+    if(number > 100000000)
+        return "1G";
+
+    if(number < 0)
+        return "-"+displayNumber(-number);
+
+    if(number<1000)
+        return QString::number(number);
+    else if(number > 1000 && number < 1000000)
+        return QString::number(number/1000) + "K";
+    else if(number > 1000000 && number < 1000000000)
+        return QString::number(number/1000000) + "M";
+    else
+        return "1G";
+}
+
 enum posIn{inWorld, inZoning, inWait, inResearch};
 
 const int TIME_FLOW             = 1;
 
-const int GUI_WIDTH             = 1008;
+const int GUI_WIDTH             = 1010;
 const int GUI_HEIGHT            = 605;
 const QString GUI_TITLE         = "Super Continent";
 
@@ -38,6 +56,11 @@ const int WAIT_SELECT_WIDTH     = 240;
 const int WAIT_SELECT_HEIGHT    = 360;
 const int WAIT_SELECT_START_X   = ZONING_START_X;
 const int WAIT_SELECT_START_Y   = ZONING_END_Y + 3;
+const int WAIT_LINE_NUMBER      = 20;
+const int WAIT_LINE_HEIGHT      = WAIT_SELECT_HEIGHT / WAIT_LINE_NUMBER;
+const int WAIT_OPTION_LINE_N    = 4;
+const int WAIT_OPTION_NUMBER    = WAIT_LINE_NUMBER / WAIT_OPTION_LINE_N;
+const int WAIT_OPTION_HEIGHT    = WAIT_OPTION_LINE_N * WAIT_LINE_HEIGHT;
 
 const int RESOURCE_PANEL_WIDTH  = 160;
 const int RESOURCE_PANEL_HEIGHT = 100;
@@ -47,30 +70,33 @@ const int RESOURCE_PANEL_END_X  = RESOURCE_PANEL_START_X + RESOURCE_PANEL_WIDTH;
 const int RESOURCE_PANEL_END_Y  = RESOURCE_PANEL_START_Y + RESOURCE_PANEL_HEIGHT;
 const int RESOURCE_PANEL_H_SIZE = 20;
 
-const int POWER_PANEL_WIDTH  = 160;
-const int POWER_PANEL_HEIGHT = 60;
-const int POWER_PANEL_START_X= RESOURCE_PANEL_START_X;
-const int POWER_PANEL_START_Y= RESOURCE_PANEL_END_Y;
-const int POWER_PANEL_END_X  = POWER_PANEL_START_X + POWER_PANEL_WIDTH;
-const int POWER_PANEL_END_Y  = POWER_PANEL_START_Y + POWER_PANEL_HEIGHT;
-const int POWER_PANEL_H_SIZE = 20;
+const int POWER_PANEL_WIDTH     = 160;
+const int POWER_PANEL_HEIGHT    = 60;
+const int POWER_PANEL_START_X   = RESOURCE_PANEL_START_X;
+const int POWER_PANEL_START_Y   = RESOURCE_PANEL_END_Y;
+const int POWER_PANEL_END_X     = POWER_PANEL_START_X + POWER_PANEL_WIDTH;
+const int POWER_PANEL_END_Y     = POWER_PANEL_START_Y + POWER_PANEL_HEIGHT;
+const int POWER_PANEL_H_SIZE    = 20;
 
-static QString displayNumber(int number)
-{
-    if(number > 100000000)
-        return "1G";
+const int RESEARCH_HEIGHT_SIZE  = 20;
+const int RESEARCH_WIDTH_SIZE   = 100;
+const int RESEARCH_T_WIDTH_SIZE = 53;
+const int RESEARCH_DX           = 6;
+const int RESEARCH_T_HEIGHT_SIZE= RESEARCH_HEIGHT_SIZE;
+const int RESEARCH_START_X      = POWER_PANEL_START_X;
+const int RESEARCH_T_START_X    = RESEARCH_START_X + RESEARCH_WIDTH_SIZE + RESEARCH_DX;
+const int RESEARCH_MILITARY_Y   = POWER_PANEL_END_Y + RESEARCH_DX;
+const int RESEARCH_MILITARY_T_Y = RESEARCH_MILITARY_Y;
+const int RESEARCH_CIVIL_Y      = RESEARCH_MILITARY_Y + RESEARCH_HEIGHT_SIZE + RESEARCH_DX;
+const int RESEARCH_CIVIL_T_Y    = RESEARCH_CIVIL_Y;
+const int RESEARCH_BEYOND_Y     = RESEARCH_CIVIL_Y + RESEARCH_HEIGHT_SIZE + RESEARCH_DX;
+const int RESEARCH_BEYOND_T_Y   = RESEARCH_BEYOND_Y;
 
-    if(number < 0)
-        return "-"+displayNumber(-number);
-
-    if(number<1000)
-        return QString::number(number);
-    else if(number > 1000 && number < 1000000)
-        return QString::number(number/1000) + "K";
-    else if(number > 1000000 && number < 1000000000)
-        return QString::number(number/1000000) + "M";
-    else
-        return "1G";
-}
+const int TEXT_START_X          = RESEARCH_START_X;
+const int TEXT_START_Y          = WAIT_SELECT_START_Y;
+const int TEXT_WIDTH            = POWER_PANEL_WIDTH;
+const int TEXT_HEIGHT           = WAIT_SELECT_HEIGHT;
+const int TEXT_LINE_HEIGHT      = 20;
+const int TEXT_LINE_NUMBER      = TEXT_HEIGHT / TEXT_LINE_HEIGHT;
 
 #endif // CORE_H
