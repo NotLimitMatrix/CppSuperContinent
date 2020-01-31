@@ -10,7 +10,8 @@ Block::Block(int id, int r, int c)
     _modifier = BLOCK_MODIFIER[_status_id];
     _color = BLOCK_STATUS[_status_id];
     _zoning_number = BLOCK_ZONING[QRandomGenerator::global()->bounded(3)];
-    qDebug() << _zoning_number;
+
+    setZoning(new GUI_zoning(_zoning_number));
 }
 
 int Block::randomStatus()

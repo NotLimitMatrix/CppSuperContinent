@@ -31,6 +31,7 @@ SOURCES += \
 HEADERS += \
     Block.h \
     Core.h \
+    Function.h \
     GUI_power_panel.h \
     GUI_research_panel.h \
     GUI_resource_panel.h \

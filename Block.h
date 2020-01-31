@@ -2,6 +2,7 @@
 #define BLOCK_H
 
 #include"Core.h"
+#include"GUI_zoning.h"
 
 class Block
 {
@@ -14,6 +15,8 @@ class Block
     int _zoning_number;
     QColor _color;
 
+    GUI_zoning *_zoning;
+
 public:
     Block(int id, int r, int c);
     int randomStatus();
@@ -24,6 +27,10 @@ public:
     int getX(){return _rc.x();}
     int getY(){return _rc.y();}
     int getId(){return _id;}
+
+    void setZoning(GUI_zoning *z){_zoning = z;}
+    GUI_zoning *getZoning(){return _zoning;}
+
 };
 
 #endif // BLOCK_H
