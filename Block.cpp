@@ -39,3 +39,10 @@ Block Block::newBlock(int r, int c, int size)
     int id = r * size + c;
     return Block(id, r, c);
 }
+
+QRect Block::getRect(int startX, int startY, int size)
+{
+    int x = startX + _rc.x() * size;
+    int y = startY + _rc.y() * size;
+    return QRect(x, y, size, size);
+}

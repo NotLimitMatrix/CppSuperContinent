@@ -55,7 +55,7 @@ const int WORLD_START_X         = 1;
 const int WORLD_START_Y         = 1;
 const int WORLD_END_X           = WORLD_WIDTH + WORLD_START_X;
 const int WORLD_END_Y           = WORLD_HEIGHT + WORLD_START_Y;
-const int WORLD_NUMBER          = 20;
+const int WORLD_NUMBER          = 10;
 const int WORLD_SQUARE_SIZE     = WORLD_WIDTH / WORLD_NUMBER;
 
 const int ZONING_WIDTH          = 240;

@@ -7,7 +7,9 @@
 class GUI_world
 {
     int _number;
-    QVector<Block> BlockVector;
+    int _sum_number;
+
+    QVector<Block*> BlockVector;
 
 public:
     GUI_world(int number);
