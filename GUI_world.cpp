@@ -27,7 +27,7 @@ void GUI_world::draw(QPainter *painter)
         rTemp = bTemp->getRect(WORLD_START_X, WORLD_START_Y, WORLD_SQUARE_SIZE);
         painter->drawRect(rTemp);
 
-        stringTemp = QString("%3(%1,%2)").arg(bTemp->getX()).arg(bTemp->getY()).arg(bTemp->getId());
+        //stringTemp = QString("%3(%1,%2)").arg(bTemp->getX()).arg(bTemp->getY()).arg(bTemp->getId());
         painter->drawText(rTemp, Qt::AlignCenter, stringTemp);
     }
 }
