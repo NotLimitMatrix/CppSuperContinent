@@ -7,6 +7,9 @@
 #include<QRect>
 #include<QMainWindow>
 #include<QDebug>
+#include<QVector>
+#include<QColor>
+#include<QPen>
 
 static QString displayNumber(int number)
 {
@@ -27,6 +30,17 @@ static QString displayNumber(int number)
 }
 
 enum posIn{inWorld, inZoning, inWait, inResearch};
+
+const QColor BLACK              = Qt::black;
+const QColor WHITE              = Qt::white;
+const QColor DEAD_BLOCK         = QColor(255, 105, 180);
+const QColor BAD_BLOCK          = QColor(255, 165, 0);
+const QColor NORMAL_BLOCK       = QColor(0, 255, 255);
+const QColor GOOD_BLOCK         = QColor(100, 149, 237);
+const QColor IDEAL_BLOCK        = QColor(0, 255, 127);
+const QColor SCHEDULE_MILITARY  = QColor(135,206,250);
+const QColor SCHEDULE_CIVIL     = QColor(244,164,96);
+const QColor SCHEDULE_BEYOND    = QColor(186,85,211);
 
 const int TIME_FLOW             = 1;
 

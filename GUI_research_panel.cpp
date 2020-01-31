@@ -5,38 +5,55 @@ GUI_research_panel::GUI_research_panel()
 
 }
 
-void GUI_research_panel::draw(QPainter *painter)
+void GUI_research_panel::drawOneResearch(QPainter *painter, int y, QColor c, QRect& rSch, QRect& rTran, int rate, int sch, QString title)
 {
     QString tempDisplay;
-    QRect tempRect;
 
-    painter->setBrush(Qt::white);
-    painter->drawRect(rMilitarySchedule);
-    painter->drawRect(rMilitaryTransform);
-    painter->drawText(rMilitaryTransform, Qt::AlignCenter, QString::number(rateMilitary));
-    tempRect = QRect(RESEARCH_START_X, RESEARCH_MILITARY_Y,scheduleMilitary, RESEARCH_T_HEIGHT_SIZE);
-    painter->setBrush(Qt::red);
-    painter->drawRect(tempRect);
-    tempDisplay = QString("%1 %2%").arg(titleMilitary).arg(QString::number(scheduleMilitary));
-    painter->drawText(rMilitarySchedule, Qt::AlignCenter, tempDisplay);
 
-    painter->setBrush(Qt::white);
-    painter->drawRect(rCivilSchedule);
-    painter->drawRect(rCivilTransform);
-    painter->drawText(rCivilTransform, Qt::AlignCenter, QString::number(rateCivil));
-    tempRect = QRect(RESEARCH_START_X, RESEARCH_CIVIL_Y, scheduleCivil, RESEARCH_T_HEIGHT_SIZE);
-    painter->setBrush(Qt::blue);
-    painter->drawRect(tempRect);
-    tempDisplay = QString("%1 %2%").arg(titleCivil).arg(QString::number(scheduleCivil));
-    painter->drawText(rCivilSchedule, Qt::AlignCenter, tempDisplay);
+    painter->setBrush(WHITE);
+    painter->drawRect(rSch);
+    painter->drawRect(rTran);
+    painter->drawText(rTran, Qt::AlignCenter, QString::number(rate));
 
-    painter->setBrush(Qt::white);
-    painter->drawRect(rBeyondSchedule);
-    painter->drawRect(rBeyondTransform);
-    painter->drawText(rBeyondTransform, Qt::AlignCenter, QString::number(rateBeyond));
-    tempRect = QRect(RESEARCH_START_X, RESEARCH_BEYOND_Y, scheduleBeyond, RESEARCH_T_HEIGHT_SIZE);
-    painter->setBrush(Qt::yellow);
+    drawSchedule(painter, title, y, sch, c);
+
+    painter->drawText(rSch, Qt::AlignCenter,QString("%1 %2%").arg(title).arg(QString::number(sch)));
+}
+
+void GUI_research_panel::drawSchedule(QPainter *painter,QString title, int y, int schedule, QColor c)
+{
+    painter->setBrush(c);
+    QRect tempRect(RESEARCH_START_X, y, schedule, RESEARCH_T_HEIGHT_SIZE);
     painter->drawRect(tempRect);
-    tempDisplay = QString("%1 %2%").arg(titleBeyond).arg(QString::number(scheduleBeyond));
-    painter->drawText(rBeyondSchedule, Qt::AlignCenter, tempDisplay);
+
+}
+
+void GUI_research_panel::draw(QPainter *painter)
+{
+    drawOneResearch(painter,
+                    RESEARCH_MILITARY_Y,
+                    SCHEDULE_MILITARY,
+                    rMilitarySchedule,
+                    rMilitaryTransform,
+                    rateMilitary,
+                    scheduleMilitary,
+                    titleMilitary);
+
+    drawOneResearch(painter,
+                    RESEARCH_CIVIL_Y,
+                    SCHEDULE_CIVIL,
+                    rCivilSchedule,
+                    rCivilTransform,
+                    rateCivil,
+                    scheduleCivil,
+                    titleCivil);
+
+    drawOneResearch(painter,
+                    RESEARCH_BEYOND_Y,
+                    SCHEDULE_BEYOND,
+                    rBeyondSchedule,
+                    rBeyondTransform,
+                    rateBeyond,
+                    scheduleBeyond,
+                    titleBeyond);
 }
