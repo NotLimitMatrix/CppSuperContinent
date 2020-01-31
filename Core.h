@@ -10,6 +10,7 @@
 #include<QVector>
 #include<QColor>
 #include<QPen>
+#include<QRandomGenerator>
 
 static QString displayNumber(int number)
 {
@@ -112,5 +113,12 @@ const int TEXT_WIDTH            = POWER_PANEL_WIDTH;
 const int TEXT_HEIGHT           = WAIT_SELECT_HEIGHT;
 const int TEXT_LINE_HEIGHT      = 20;
 const int TEXT_LINE_NUMBER      = TEXT_HEIGHT / TEXT_LINE_HEIGHT;
+
+const QColor BLOCK_STATUS[5]    = {DEAD_BLOCK, BAD_BLOCK, NORMAL_BLOCK, GOOD_BLOCK, IDEAL_BLOCK};
+const QString BLOCK_WORD[5]     = {"死寂","恶劣","一般","优秀","理想"};
+const int BLOCK_WEIGHT[5]       = {5, 23, 60, 9, 3};
+const int BLOCK_MODIFIER[5]     = {-50, -25, 0, 25, 50};
+//const int BLOCK_PERCENT[5]      = {0, 25, 50, 75, 100};
+const int BLOCK_ZONING[5]       = {4,5,6};
 
 #endif // CORE_H
