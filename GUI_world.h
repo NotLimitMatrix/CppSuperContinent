@@ -2,10 +2,12 @@
 #define GUI_WORLD_H
 
 #include"Core.h"
+#include"Block.h"
 
 class GUI_world
 {
     int _number;
+    QVector<Block> BlockVector;
 
 public:
     GUI_world(int number);
