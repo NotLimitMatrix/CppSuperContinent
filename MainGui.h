@@ -29,6 +29,9 @@ public:
     MainGui(QWidget *parent = nullptr);
     ~MainGui();
 
+    void setZoning(GUI_zoning *z){_zoning = z;}
+
     void paintEvent(QPaintEvent *event);
+    void mousePressEvent(QMouseEvent *event);
 };
 #endif // MAINGUI_H

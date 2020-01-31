@@ -28,3 +28,19 @@ void MainGui::paintEvent(QPaintEvent *event)
 
     painter->end();
 }
+
+void MainGui::mousePressEvent(QMouseEvent *event)
+{
+    Qt::MouseButtons b = event->buttons();
+    int posX = event->x();
+    int posY = event->y();
+
+    if(b == Qt::LeftButton)
+    {
+        if(_world->inWorld(posX, posY))
+        {
+            _zoning = _world->getZoningWithPos(posX, posY);
+        }
+    }
+    update();
+}

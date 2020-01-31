@@ -7,7 +7,8 @@ class ZSolt
 {
     int _id;
     QPoint _rc;
-    QColor _color;
+    QColor _color = WHITE;
+
 public:
     ZSolt(int id, int r, int c)
     {
@@ -30,6 +31,7 @@ public:
 
     GUI_zoning(int number);
     void draw(QPainter *painter);
+    int getSize(){return _size;}
 };
 
 #endif // GUI_ZONING_H

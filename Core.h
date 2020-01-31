@@ -11,6 +11,7 @@
 #include<QColor>
 #include<QPen>
 #include<QRandomGenerator>
+#include<QMouseEvent>
 
 #include"Function.h"
 
