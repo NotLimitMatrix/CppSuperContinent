@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     GUI_power_panel.cpp \
+    GUI_research_panel.cpp \
     GUI_resource_panel.cpp \
     GUI_select.cpp \
     GUI_world.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     Core.h \
     GUI_power_panel.h \
+    GUI_research_panel.h \
     GUI_resource_panel.h \
     GUI_select.h \
     GUI_world.h \
