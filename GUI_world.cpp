@@ -11,7 +11,7 @@ GUI_world::GUI_world(int number)
     {
         int r = i / _number;
         int c = i % _number;
-        BlockVector.push_back(new Block(i, r, c));
+        BlockVector.push_back(new Block(i, c, r));
     }
 }
 

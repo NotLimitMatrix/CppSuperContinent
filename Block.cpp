@@ -15,13 +15,16 @@ Block::Block(int id, int r, int c)
 int Block::randomStatus()
 {
     int r = QRandomGenerator::global()->bounded(100);
-    if(r >= 0 && r < BLOCK_WEIGHT[0])
+
+    qDebug() << r;
+
+    if(r >= 0 && r < W1)
         return 0;
-    else if(r >= BLOCK_WEIGHT[0] && r < BLOCK_WEIGHT[1])
+    else if(r >= W1 && r < W2)
         return 1;
-    else if(r >= BLOCK_WEIGHT[1] && r < BLOCK_WEIGHT[2])
+    else if(r >= W2 && r < W3)
         return 2;
-    else if(r >= BLOCK_WEIGHT[2] && r < BLOCK_WEIGHT[3])
+    else if(r >= W3 && r < W4)
         return 3;
     else
         return 4;
