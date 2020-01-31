@@ -6,12 +6,18 @@
 class SelectOption
 {
 public:
-    QString line1 = QString("");
-    QString line2 = QString("");
-    QString line3 = QString("");
-    QString line4 = QString("");
+    QString line1;
+    QString line2;
+    QString line3;
+    QString line4;
 
-    SelectOption();
+    SelectOption()
+    {
+        line1 = QString("灵能理论");
+        line2 = QString("");
+        line3 = QString("");
+        line4 = QString("");
+    }
 
     inline void drawOne(QPainter *painter, int i, int j, QString line)
     {
@@ -29,16 +35,52 @@ public:
         drawOne(painter, i ,4, line4);
     }
 
+    void setString(QString &l1, QString &l2, QString &l3, QString &l4)
+    {
+        line1 = l1;
+        line2 = l2;
+        line3 = l3;
+        line4 = l4;
+    }
+
+    void clear()
+    {
+        line1 = QString("");
+        line2 = QString("");
+        line3 = QString("");
+        line4 = QString("");
+    }
+
 };
+
+typedef QVector<SelectOption*> vSelect;
+typedef QVector<vSelect*> multVSelect;
 
 class GUI_select
 {   
-    QString _string_list[WAIT_LINE_NUMBER];
-    QString _display_list[WAIT_OPTION_NUMBER][WAIT_OPTION_LINE_N];
+    vSelect _showOption;
+
+    SelectOption *_option1 = new SelectOption;
+    SelectOption *_option2 = new SelectOption;
+    SelectOption *_option3 = new SelectOption;
+    SelectOption *_option4 = new SelectOption;
+    SelectOption *_option5 = new SelectOption;
 
 public:
     GUI_select();
-    void draw(QPainter *painter);
+    void draw(QPainter *painter, int page=0);
+    void getOptionWithPage(int page);
+
+    void _clear()
+    {
+        _option1->clear();
+        _option2->clear();
+        _option3->clear();
+        _option4->clear();
+        _option5->clear();
+    }
+    void getOption(int ident, SelectOption *opt);
+    void drawOption(QPainter *painter);
 };
 
 #endif // GUI_SELECT_H
