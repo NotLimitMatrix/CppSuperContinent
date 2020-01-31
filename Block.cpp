@@ -49,3 +49,11 @@ QRect Block::getRect(int startX, int startY, int size)
     int y = startY + _rc.y() * size;
     return QRect(x, y, size, size);
 }
+
+void Block::getDisplay(QVector<QString> *vString)
+{
+    vString->clear();
+    vString->push_back(QString("地块:\t%1").arg(_id));
+    vString->push_back(QString("环境:\t%1\t\t修正:%2%").arg(_word).arg(_modifier));
+    vString->push_back(QString("区划:\t%1").arg(_zoning_number * _zoning_number));
+}

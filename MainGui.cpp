@@ -7,6 +7,8 @@ MainGui::MainGui(QWidget *parent)
     setMinimumSize(GUI_WIDTH, GUI_HEIGHT);
     setMaximumSize(GUI_WIDTH, GUI_HEIGHT);
     setWindowTitle(GUI_TITLE);
+
+    _displayText.push_back("暂无信息");
 }
 
 MainGui::~MainGui()
@@ -24,7 +26,7 @@ void MainGui::paintEvent(QPaintEvent *event)
     _resource_panel->draw(painter);
     _power_panel->draw(painter);
     _research_panel->draw(painter);
-    _text_browser->draw(painter);
+    _text_browser->draw(painter, _displayText);
 
     painter->end();
 }
@@ -35,11 +37,16 @@ void MainGui::mousePressEvent(QMouseEvent *event)
     int posX = event->x();
     int posY = event->y();
 
+    int idTemp;
+
     if(b == Qt::LeftButton)
     {
         if(_world->inWorld(posX, posY))
         {
-            _zoning = _world->getZoningWithPos(posX, posY);
+            idTemp = _world->getIdWithPos(posX, posY);
+            Block bTemp = _world->getBlockWithId(idTemp);
+            setZoning(bTemp.getZoning());
+            bTemp.getDisplay(&_displayText);
         }
     }
     update();

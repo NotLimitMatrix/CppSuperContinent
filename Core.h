@@ -13,9 +13,23 @@
 #include<QRandomGenerator>
 #include<QMouseEvent>
 
-#include"Function.h"
+static QString displayNumber(int number)
+{
+    if(number > 100000000)
+        return "1G";
 
-enum posIn{inWorld, inZoning, inWait, inResearch};
+    if(number < 0)
+        return "-"+displayNumber(-number);
+
+    if(number<1000)
+        return QString::number(number);
+    else if(number > 1000 && number < 1000000)
+        return QString::number(number/1000) + "K";
+    else if(number > 1000000 && number < 1000000000)
+        return QString::number(number/1000000) + "M";
+    else
+        return "1G";
+}
 
 const QColor BLACK              = Qt::black;
 const QColor WHITE              = Qt::white;

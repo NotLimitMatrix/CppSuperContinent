@@ -11,6 +11,8 @@
 #include"GUI_research_panel.h"
 #include"GUI_text.h"
 
+#include"Block.h"
+
 class MainGui : public QMainWindow
 {
     Q_OBJECT
@@ -24,6 +26,8 @@ class MainGui : public QMainWindow
     GUI_power_panel *_power_panel = new GUI_power_panel;
     GUI_research_panel *_research_panel = new GUI_research_panel;
     GUI_text *_text_browser = new GUI_text;
+
+    QVector<QString> _displayText;
 
 public:
     MainGui(QWidget *parent = nullptr);

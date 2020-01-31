@@ -31,6 +31,8 @@ public:
     void setZoning(GUI_zoning *z){_zoning = z;}
     GUI_zoning *getZoning(){return _zoning;}
 
+    void getDisplay(QVector<QString> *vString);
+
 };
 
 #endif // BLOCK_H
