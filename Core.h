@@ -48,7 +48,7 @@ const int ZONING_START_X        = WORLD_END_X + 3;
 const int ZONING_START_Y        = WORLD_START_X;
 const int ZONING_END_X          = ZONING_WIDTH + ZONING_START_X;
 const int ZONING_END_Y          = ZONING_HEIGHT + ZONING_START_Y;
-const int ZONING_NUMBER         = 5;
+const int ZONING_NUMBER         = 1;
 const int ZONING_SQUARE_SIZE    = ZONING_WIDTH / ZONING_NUMBER;
 
 const int WAIT_SELECT_WIDTH     = 240;
