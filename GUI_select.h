@@ -13,7 +13,7 @@ public:
 
     SelectOption()
     {
-        line1 = QString("灵能理论");
+        line1 = QString("");
         line2 = QString("");
         line3 = QString("");
         line4 = QString("");
