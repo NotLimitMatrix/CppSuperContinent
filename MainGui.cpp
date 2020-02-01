@@ -37,26 +37,46 @@ void MainGui::mousePressEvent(QMouseEvent *event)
     int posX = event->x();
     int posY = event->y();
 
-    int idTemp;
-    Block *bTemp = nullptr;
-    ZSolt *zTemp = nullptr;
+    display(posX, posY);
 
     if(b == Qt::LeftButton)
     {
-        if(_world->inWorld(posX, posY))
-        {
-            idTemp = _world->getIdWithPos(posX, posY);
-            bTemp = _world->getBlockWithId(idTemp);
-            setZoning(bTemp->getZoning());
-            bTemp->getDisplay(&_displayText);
-        }
 
-        if(_zoning->inZoning(posX, posY))
-        {
-            idTemp = _zoning->getIdWithPos(posX, posY);
-            zTemp = _zoning->getSoltWithId(idTemp);
-            zTemp->getDisplay(&_displayText);
-        }
     }
+
     update();
+}
+
+void MainGui::display(int px, int py)
+{
+    int idTemp;
+    Block *bTemp = nullptr;
+    ZSolt *zTemp = nullptr;
+    SelectOption *soTemp = nullptr;
+
+    _displayText.clear();
+    _displayText.push_back(QString("Pos(%1,%2)").arg(px).arg(py));
+
+    if(_world->inWorld(px, py))
+    {
+        idTemp = _world->getIdWithPos(px, py);
+        bTemp = _world->getBlockWithId(idTemp);
+        setZoning(bTemp->getZoning());
+        bTemp->getDisplay(&_displayText);
+    }
+
+    if(_zoning->inZoning(px, py))
+    {
+        idTemp = _zoning->getIdWithPos(px, py);
+        zTemp = _zoning->getSoltWithId(idTemp);
+        zTemp->getDisplay(&_displayText);
+    }
+
+
+    if(_wait_select->inSelect(px,py))
+    {
+        idTemp = _wait_select->getIdWithPos(py);
+        soTemp = _wait_select->getOptionWithId(idTemp);
+        soTemp->getDisplay(&_displayText);
+    }
 }

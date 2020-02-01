@@ -5,19 +5,22 @@
 
 class SelectOption
 {
+    int _id;
 public:
     QString line1;
     QString line2;
     QString line3;
     QString line4;
-
-    SelectOption()
+    SelectOption(int id)
     {
+        _id = id;
         line1 = QString("");
         line2 = QString("");
         line3 = QString("");
         line4 = QString("");
     }
+
+    int getId(){return _id;}
 
     inline void drawOne(QPainter *painter, int i, int j, QString line)
     {
@@ -51,6 +54,8 @@ public:
         line4 = QString("");
     }
 
+    void getDisplay(QVector<QString> *vString);
+
 };
 
 typedef QVector<SelectOption*> vSelect;
@@ -60,11 +65,11 @@ class GUI_select
 {   
     vSelect _showOption;
 
-    SelectOption *_option1 = new SelectOption;
-    SelectOption *_option2 = new SelectOption;
-    SelectOption *_option3 = new SelectOption;
-    SelectOption *_option4 = new SelectOption;
-    SelectOption *_option5 = new SelectOption;
+    SelectOption *_option1 = new SelectOption(0);
+    SelectOption *_option2 = new SelectOption(1);
+    SelectOption *_option3 = new SelectOption(2);
+    SelectOption *_option4 = new SelectOption(3);
+    SelectOption *_option5 = new SelectOption(4);
 
 public:
     GUI_select();
@@ -81,6 +86,10 @@ public:
     }
     void getOption(int ident, SelectOption *opt);
     void drawOption(QPainter *painter);
+
+    bool inSelect(int x, int y);
+    int getIdWithPos(int y);
+    SelectOption *getOptionWithId(int id);
 };
 
 #endif // GUI_SELECT_H

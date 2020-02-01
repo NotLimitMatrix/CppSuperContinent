@@ -10,6 +10,7 @@ class Block
     QPoint _rc;
     bool _visable = true;
     bool _can_move = true;
+    int _size;
 
     int _status_id;
     QString _word;
@@ -19,12 +20,15 @@ class Block
 
     GUI_zoning *_zoning;
 
+    QRect solt_left_button;
+    QRect solt_right_button;
+    QRect solt_left_top;
+    QRect solt_right_top;
+
 public:
-    Block(int id, int r, int c);
+    Block(int id, int r, int c, int size);
     int randomStatus();
-    static Block newBlock(int id, int size);
-    static Block newBlock(int r, int c, int size);
-    QRect getRect(int startX, int startY, int size);
+    QRect getRect(int startX, int startY);
     QColor getColor();
     int getX(){return _rc.x();}
     int getY(){return _rc.y();}
@@ -38,6 +42,9 @@ public:
     void setVisible(bool v){ _visable = v;}
     void setCanMove(bool cm){ _can_move = cm;}
 
+    void drawButton(QPainter *painter);
+    void drawSoltLeftTop(QPainter *painter);
+    void drawSoltRightTop(QPainter *painter);
 };
 
 #endif // BLOCK_H

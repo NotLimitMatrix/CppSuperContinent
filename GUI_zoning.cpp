@@ -42,8 +42,6 @@ QRect ZSolt::getBuildRect(int startX, int startY, int size, int dx)
 
 void ZSolt::getDisplay(QVector<QString> *vString)
 {
-    vString->clear();
-
     vString->push_back(QString(" [区划] %1: (%2,%3)").arg(_id).arg(_rc.x()).arg(_rc.y()));
     vString->push_back(QString(" [所属地块] %1").arg(_belong_id));
 }

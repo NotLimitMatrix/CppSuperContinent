@@ -37,5 +37,7 @@ public:
 
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
+
+    void display(int px, int py);
 };
 #endif // MAINGUI_H
