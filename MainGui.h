@@ -20,7 +20,7 @@ class MainGui : public QMainWindow
     int _world_number = WORLD_NUMBER;
     GUI_world *_world = new GUI_world(_world_number);
     int _zoning_number = ZONING_NUMBER;
-    GUI_zoning *_zoning = new GUI_zoning(_zoning_number);
+    GUI_zoning *_zoning = new GUI_zoning(_zoning_number, -1);
     GUI_select *_wait_select = new GUI_select;
     GUI_resource_panel *_resource_panel = new GUI_resource_panel;
     GUI_power_panel *_power_panel = new GUI_power_panel;

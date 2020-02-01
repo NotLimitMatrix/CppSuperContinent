@@ -47,15 +47,10 @@ int GUI_world::getIdWithPos(int x, int y)
     return iy * _number + ix;
 }
 
-Block GUI_world::getBlockWithId(int id)
+Block* GUI_world::getBlockWithId(int id)
 {
     for(Block *bTemp : BlockVector)
         if(bTemp->getId() == id)
-            return *bTemp;
-    return Block(0,0,0);
-}
-
-GUI_zoning *GUI_world::getZoningWithPos(int x, int y)
-{
-    return getBlockWithId(getIdWithPos(x,y)).getZoning();
+            return bTemp;
+    return nullptr;
 }

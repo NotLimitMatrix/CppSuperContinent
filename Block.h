@@ -31,9 +31,12 @@ public:
     int getId(){return _id;}
 
     void setZoning(GUI_zoning *z){_zoning = z;}
-    GUI_zoning *getZoning(){return _zoning;}
+    GUI_zoning *getZoning();
 
     void getDisplay(QVector<QString> *vString);
+
+    void setVisible(bool v){ _visable = v;}
+    void setCanMove(bool cm){ _can_move = cm;}
 
 };
 

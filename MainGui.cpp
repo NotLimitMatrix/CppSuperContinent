@@ -38,15 +38,24 @@ void MainGui::mousePressEvent(QMouseEvent *event)
     int posY = event->y();
 
     int idTemp;
+    Block *bTemp = nullptr;
+    ZSolt *zTemp = nullptr;
 
     if(b == Qt::LeftButton)
     {
         if(_world->inWorld(posX, posY))
         {
             idTemp = _world->getIdWithPos(posX, posY);
-            Block bTemp = _world->getBlockWithId(idTemp);
-            setZoning(bTemp.getZoning());
-            bTemp.getDisplay(&_displayText);
+            bTemp = _world->getBlockWithId(idTemp);
+            setZoning(bTemp->getZoning());
+            bTemp->getDisplay(&_displayText);
+        }
+
+        if(_zoning->inZoning(posX, posY))
+        {
+            idTemp = _zoning->getIdWithPos(posX, posY);
+            zTemp = _zoning->getSoltWithId(idTemp);
+            zTemp->getDisplay(&_displayText);
         }
     }
     update();

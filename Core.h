@@ -67,6 +67,7 @@ const int ZONING_END_X          = ZONING_WIDTH + ZONING_START_X;
 const int ZONING_END_Y          = ZONING_HEIGHT + ZONING_START_Y;
 const int ZONING_NUMBER         = 1;
 const int ZONING_SQUARE_SIZE    = ZONING_WIDTH / ZONING_NUMBER;
+const int ZONING_BUILD_DX       = ZONING_SQUARE_SIZE / 4;
 
 const int WAIT_SELECT_WIDTH     = 240;
 const int WAIT_SELECT_HEIGHT    = 360;

@@ -18,8 +18,7 @@ public:
 
     bool inWorld(int x, int y);
     int getIdWithPos(int x, int y);
-    Block getBlockWithId(int id);
-    GUI_zoning *getZoningWithPos(int x, int y);
+    Block *getBlockWithId(int id);
 };
 
 #endif // GUI_WORLD_H

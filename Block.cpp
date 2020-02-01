@@ -11,7 +11,7 @@ Block::Block(int id, int r, int c)
     _color = BLOCK_STATUS[_status_id];
     _zoning_number = BLOCK_ZONING[QRandomGenerator::global()->bounded(3)];
 
-    setZoning(new GUI_zoning(_zoning_number));
+    setZoning(new GUI_zoning(_zoning_number, _id));
 }
 
 int Block::randomStatus()
@@ -61,10 +61,20 @@ QColor Block::getColor()
     return _color;
 }
 
+GUI_zoning *Block::getZoning()
+{
+    // 是否可见： 是，显示地块的区划gui；不是，则默认gui
+    if(_visable)
+        return _zoning;
+    else
+        return new GUI_zoning(ZONING_NUMBER, -1);
+}
+
 void Block::getDisplay(QVector<QString> *vString)
 {
     vString->clear();
-    vString->push_back(QString("地块:\t%1").arg(_id));
-    vString->push_back(QString("环境:\t%1\t\t修正:%2%").arg(_word).arg(_modifier));
-    vString->push_back(QString("区划:\t%1").arg(_zoning_number * _zoning_number));
+
+    vString->push_back(QString(" [地块] %1: (%2,%3)").arg(_id).arg(_rc.x()).arg(_rc.y()));
+    vString->push_back(QString(" [环境] %1: (%2%)").arg(_word).arg(_modifier));
+    vString->push_back(QString(" [区划] %1").arg(_zoning_number * _zoning_number));
 }
