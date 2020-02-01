@@ -8,6 +8,8 @@ class Block
 {
     int _id;
     QPoint _rc;
+    bool _visable = true;
+    bool _can_move = true;
 
     int _status_id;
     QString _word;
@@ -23,7 +25,7 @@ public:
     static Block newBlock(int id, int size);
     static Block newBlock(int r, int c, int size);
     QRect getRect(int startX, int startY, int size);
-    QColor getColor(){return _color;}
+    QColor getColor();
     int getX(){return _rc.x();}
     int getY(){return _rc.y();}
     int getId(){return _id;}

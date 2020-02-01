@@ -41,6 +41,8 @@ const QColor IDEAL_BLOCK        = QColor(0, 255, 127);
 const QColor SCHEDULE_MILITARY  = QColor(135,206,250);
 const QColor SCHEDULE_CIVIL     = QColor(244,164,96);
 const QColor SCHEDULE_BEYOND    = QColor(186,85,211);
+const QColor BLOCK_NOT_CAN_MOVE = Qt::gray;
+const QColor BLOCK_NOT_VISIBLE  = WHITE;
 
 const int TIME_FLOW             = 1;
 

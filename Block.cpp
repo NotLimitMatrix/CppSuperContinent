@@ -50,6 +50,17 @@ QRect Block::getRect(int startX, int startY, int size)
     return QRect(x, y, size, size);
 }
 
+QColor Block::getColor()
+{
+    if(!_visable)
+        return BLOCK_NOT_VISIBLE;
+
+    if(!_can_move)
+        return BLOCK_NOT_CAN_MOVE;
+
+    return _color;
+}
+
 void Block::getDisplay(QVector<QString> *vString)
 {
     vString->clear();
