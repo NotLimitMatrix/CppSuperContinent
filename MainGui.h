@@ -3,13 +3,13 @@
 
 #include"Core.h"
 
-#include"GUI_world.h"
-#include"GUI_zoning.h"
-#include"GUI_select.h"
-#include"GUI_resource_panel.h"
-#include"GUI_power_panel.h"
-#include"GUI_research_panel.h"
-#include"GUI_text.h"
+#include"GUI/GUI_world.h"
+#include"GUI/GUI_zoning.h"
+#include"GUI/GUI_select.h"
+#include"GUI/GUI_resource_panel.h"
+#include"GUI/GUI_power_panel.h"
+#include"GUI/GUI_research_panel.h"
+#include"GUI/GUI_text.h"
 
 #include"Block.h"
 

@@ -15,7 +15,8 @@ MainGui::~MainGui()
 {
 }
 
-void MainGui::paintEvent(QPaintEvent *event)
+//void MainGui::paintEvent(QPaintEvent *event)
+void MainGui::paintEvent(QPaintEvent *)
 {
     QPainter *painter = new QPainter;
     painter->begin(this);

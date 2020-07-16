@@ -2,7 +2,7 @@
 #define BLOCK_H
 
 #include"Core.h"
-#include"GUI_zoning.h"
+#include"GUI/GUI_zoning.h"
 
 class Block
 {

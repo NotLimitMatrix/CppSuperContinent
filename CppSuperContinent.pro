@@ -17,26 +17,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Block.cpp \
-    GUI_power_panel.cpp \
-    GUI_research_panel.cpp \
-    GUI_resource_panel.cpp \
-    GUI_select.cpp \
-    GUI_text.cpp \
-    GUI_world.cpp \
-    GUI_zoning.cpp \
+    GUI/GUI_power_panel.cpp \
+    GUI/GUI_research_panel.cpp \
+    GUI/GUI_resource_panel.cpp \
+    GUI/GUI_select.cpp \
+    GUI/GUI_text.cpp \
+    GUI/GUI_world.cpp \
+    GUI/GUI_zoning.cpp \
     main.cpp \
     MainGui.cpp
 
 HEADERS += \
     Block.h \
     Core.h \
-    GUI_power_panel.h \
-    GUI_research_panel.h \
-    GUI_resource_panel.h \
-    GUI_select.h \
-    GUI_text.h \
-    GUI_world.h \
-    GUI_zoning.h \
+    GUI/GUI_power_panel.h \
+    GUI/GUI_research_panel.h \
+    GUI/GUI_resource_panel.h \
+    GUI/GUI_select.h \
+    GUI/GUI_text.h \
+    GUI/GUI_world.h \
+    GUI/GUI_zoning.h \
     MainGui.h
 
 # Default rules for deployment.
