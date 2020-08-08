@@ -64,6 +64,7 @@ void MainGui::display(int px, int py)
         bTemp = _world->getBlockWithId(idTemp);
         setZoning(bTemp->getZoning());
         bTemp->getDisplay(&_displayText);
+        _displayText.push_back(QString("地图区域"));
     }
 
     if(_zoning->inZoning(px, py))
@@ -71,6 +72,7 @@ void MainGui::display(int px, int py)
         idTemp = _zoning->getIdWithPos(px, py);
         zTemp = _zoning->getSoltWithId(idTemp);
         zTemp->getDisplay(&_displayText);
+        _displayText.push_back(QString("区划区域"));
     }
 
 
@@ -79,5 +81,27 @@ void MainGui::display(int px, int py)
         idTemp = _wait_select->getIdWithPos(py);
         soTemp = _wait_select->getOptionWithId(idTemp);
         soTemp->getDisplay(&_displayText);
+        _displayText.push_back(QString("选项区域"));
     }
+
+    if(_resource_panel->inResourcePanel(px, py))
+    {
+        _displayText.push_back(QString("资源面板"));
+    }
+
+    if(_power_panel->inPowerPanel(px, py))
+    {
+        _displayText.push_back(QString("综合实力面板"));
+    }
+
+    if(_research_panel->inResearchPanel(px, py))
+    {
+        _displayText.push_back(QString("科研面板"));
+    }
+
+    if(_text_browser->inTextBrowser(px, py))
+    {
+        _displayText.push_back(QString("消息面板"));
+    }
+
 }

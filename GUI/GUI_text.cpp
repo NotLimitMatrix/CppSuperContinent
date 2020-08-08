@@ -20,3 +20,10 @@ void GUI_text::draw(QPainter *painter, QVector<QString> &vString)
         painter->drawText(temp, vString[i]);
     }
 }
+
+bool GUI_text::inTextBrowser(int px, int py)
+{
+    bool bx = (px >= TEXT_START_X && py < TEXT_END_X);
+    bool by = (py >= TEXT_START_Y && py < TEXT_END_Y);
+    return (bx && by);
+}

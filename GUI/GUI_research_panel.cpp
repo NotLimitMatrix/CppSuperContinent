@@ -28,6 +28,13 @@ void GUI_research_panel::drawOneResearch(QPainter *painter, int y, QColor c, QRe
     painter->drawText(rSch, Qt::AlignCenter, QString("%1 %2%").arg(title).arg(QString::number(sch)));
 }
 
+bool GUI_research_panel::inResearchPanel(int px, int py)
+{
+    bool bx = (px >= RESEARCH_START_X && px < RESEARCH_END_X);
+    bool by = (py >= RESEARCH_START_Y && py < RESEARCH_END_Y);
+    return (bx && by);
+}
+
 void GUI_research_panel::draw(QPainter *painter)
 {
     drawOneResearch(painter,

@@ -49,3 +49,10 @@ QString GUI_power_panel::displayNumber(int number)
         return "1G";
 
 }
+
+bool GUI_power_panel::inPowerPanel(int px, int py)
+{
+    bool bx = (px >= POWER_PANEL_START_X && px < POWER_PANEL_END_X);
+    bool by = (py >= POWER_PANEL_START_Y && py < POWER_PANEL_END_Y);
+    return (bx && by);
+}

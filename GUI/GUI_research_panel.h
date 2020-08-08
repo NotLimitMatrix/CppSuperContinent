@@ -37,6 +37,8 @@ public:
     GUI_research_panel();
     void draw(QPainter *painter);
     void drawOneResearch(QPainter *painter, int y, QColor c, QRect& rSch, QRect& rTran, int rate, int sch, QString title);
+
+    bool inResearchPanel(int px, int py);
 };
 
 #endif // GUI_RESEARCH_PANEL_H

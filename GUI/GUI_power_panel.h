@@ -18,6 +18,8 @@ public:
     GUI_power_panel();
 
     QString displayNumber(int number);
+
+    bool inPowerPanel(int px, int py);
 };
 
 #endif // GUI_POWER_PANEL_H

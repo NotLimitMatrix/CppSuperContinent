@@ -9,6 +9,8 @@ class GUI_text
 public:
     GUI_text();
     void draw(QPainter *painter, QVector<QString>& vString);
+
+    bool inTextBrowser(int px, int py);
 };
 
 #endif // GUI_TEXT_H

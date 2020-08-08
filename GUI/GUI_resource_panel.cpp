@@ -62,3 +62,10 @@ QString GUI_resource_panel::displayNumber(int number)
     else
         return "1G";
 }
+
+bool GUI_resource_panel::inResourcePanel(int px, int py)
+{
+    bool bx = (px >= RESOURCE_PANEL_START_X && px < RESOURCE_PANEL_END_X);
+    bool by = (py >= RESOURCE_PANEL_START_Y && py < RESOURCE_PANEL_END_Y);
+    return (bx && by);
+}

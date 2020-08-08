@@ -29,6 +29,8 @@ public:
 
     QString displayNumber(int number);
 
+    bool inResourcePanel(int px, int py);
+
 };
 
 #endif // GUI_RESOURCE_PANEL_H
