@@ -44,7 +44,7 @@ const QColor SCHEDULE_BEYOND    = QColor(186,85,211);
 const QColor BLOCK_NOT_CAN_MOVE = Qt::gray;
 const QColor BLOCK_NOT_VISIBLE  = WHITE;
 
-const int TIME_FLOW             = 1;
+const int TICK_FLOW             = 1;
 
 const int GUI_WIDTH             = 1010;
 const int GUI_HEIGHT            = 605;
