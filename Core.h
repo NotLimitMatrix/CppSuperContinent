@@ -13,24 +13,6 @@
 #include<QRandomGenerator>
 #include<QMouseEvent>
 
-static QString displayNumber(int number)
-{
-    if(number > 100000000)
-        return "1G";
-
-    if(number < 0)
-        return "-"+displayNumber(-number);
-
-    if(number<1000)
-        return QString::number(number);
-    else if(number > 1000 && number < 1000000)
-        return QString::number(number/1000) + "K";
-    else if(number > 1000000 && number < 1000000000)
-        return QString::number(number/1000000) + "M";
-    else
-        return "1G";
-}
-
 const QColor BLACK              = Qt::black;
 const QColor WHITE              = Qt::white;
 const QColor DEAD_BLOCK         = QColor(255, 105, 180);
@@ -119,13 +101,14 @@ const int TEXT_LINE_HEIGHT      = 20;
 const int TEXT_LINE_NUMBER      = TEXT_HEIGHT / TEXT_LINE_HEIGHT;
 
 const QColor BLOCK_STATUS[5]    = {DEAD_BLOCK, BAD_BLOCK, NORMAL_BLOCK, GOOD_BLOCK, IDEAL_BLOCK};
-const QString BLOCK_WORD[5]     = {"死寂","恶劣","一般","优秀","理想"};
-const int BLOCK_WEIGHT[5]       = {5, 23, 60, 9, 3};
-const int W1                    = BLOCK_WEIGHT[0];
-const int W2                    = BLOCK_WEIGHT[1] + W1;
-const int W3                    = BLOCK_WEIGHT[2] + W2;
-const int W4                    = BLOCK_WEIGHT[3] + W3;
-const int BLOCK_MODIFIER[5]     = {-50, -25, 0, 25, 50};
+const QString BLOCK_WORD[5]     = {"死寂","恶劣","一般","理想","仙境"};
+const int BLOCK_WEIGHT[5]       = {5, 23, 60, 9, 3}; // The sum is 100
+const int GENERATOR_LENGTH[5]   = {BLOCK_WEIGHT[0],
+                                  BLOCK_WEIGHT[0]+BLOCK_WEIGHT[1],
+                                  BLOCK_WEIGHT[0]+BLOCK_WEIGHT[1]+BLOCK_WEIGHT[2],
+                                  BLOCK_WEIGHT[0]+BLOCK_WEIGHT[1]+BLOCK_WEIGHT[2]+BLOCK_WEIGHT[3],
+                                  100};
+const int BLOCK_MODIFIER[5]     = {-50, -25, 0, 20, 55};
 //const int BLOCK_PERCENT[5]      = {0, 25, 50, 75, 100};
 const int BLOCK_ZONING[5]       = {4,5,6};
 

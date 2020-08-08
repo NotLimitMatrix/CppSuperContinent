@@ -35,13 +35,13 @@ int Block::randomStatus()
 {
     int r = QRandomGenerator::global()->bounded(100);
 
-    if(r >= 0 && r < W1)
+    if(r >= 0 && r < GENERATOR_LENGTH[0])
         return 0;
-    else if(r >= W1 && r < W2)
+    else if(r >= GENERATOR_LENGTH[0] && r < GENERATOR_LENGTH[1])
         return 1;
-    else if(r >= W2 && r < W3)
+    else if(r >= GENERATOR_LENGTH[1] && r < GENERATOR_LENGTH[2])
         return 2;
-    else if(r >= W3 && r < W4)
+    else if(r >= GENERATOR_LENGTH[2] && r < GENERATOR_LENGTH[3])
         return 3;
     else
         return 4;

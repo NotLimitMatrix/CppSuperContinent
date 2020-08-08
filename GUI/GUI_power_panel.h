@@ -16,6 +16,8 @@ public:
     void draw(QPainter *painter);
 
     GUI_power_panel();
+
+    QString displayNumber(int number);
 };
 
 #endif // GUI_POWER_PANEL_H

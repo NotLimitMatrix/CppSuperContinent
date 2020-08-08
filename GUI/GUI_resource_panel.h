@@ -27,6 +27,8 @@ public:
     void updateStorageList();
     void updateDailyList();
 
+    QString displayNumber(int number);
+
 };
 
 #endif // GUI_RESOURCE_PANEL_H
