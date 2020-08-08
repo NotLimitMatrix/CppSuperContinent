@@ -5,7 +5,6 @@
 
 #include"GUI/GUI_world.h"
 #include"GUI/GUI_zoning.h"
-#include"GUI/GUI_select.h"
 #include"GUI/GUI_resource_panel.h"
 #include"GUI/GUI_power_panel.h"
 #include"GUI/GUI_research_panel.h"
@@ -21,7 +20,6 @@ class MainGui : public QMainWindow
     GUI_world *_world = new GUI_world(_world_number);
     int _zoning_number = ZONING_NUMBER;
     GUI_zoning *_zoning = new GUI_zoning(_zoning_number, -1);
-    GUI_select *_wait_select = new GUI_select;
     GUI_resource_panel *_resource_panel = new GUI_resource_panel;
     GUI_power_panel *_power_panel = new GUI_power_panel;
     GUI_research_panel *_research_panel = new GUI_research_panel;

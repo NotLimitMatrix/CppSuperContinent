@@ -23,7 +23,6 @@ void MainGui::paintEvent(QPaintEvent *)
 
     _world->draw(painter);
     _zoning->draw(painter);
-    _wait_select->draw(painter);
     _resource_panel->draw(painter);
     _power_panel->draw(painter);
     _research_panel->draw(painter);
@@ -53,7 +52,6 @@ void MainGui::display(int px, int py)
     int idTemp;
     Block *bTemp = nullptr;
     ZSolt *zTemp = nullptr;
-    SelectOption *soTemp = nullptr;
 
     _displayText.clear();
     _displayText.push_back(QString("Pos(%1,%2)").arg(px).arg(py));
@@ -73,15 +71,6 @@ void MainGui::display(int px, int py)
         zTemp = _zoning->getSoltWithId(idTemp);
         zTemp->getDisplay(&_displayText);
         _displayText.push_back(QString("区划区域"));
-    }
-
-
-    if(_wait_select->inSelect(px,py))
-    {
-        idTemp = _wait_select->getIdWithPos(py);
-        soTemp = _wait_select->getOptionWithId(idTemp);
-        soTemp->getDisplay(&_displayText);
-        _displayText.push_back(QString("选项区域"));
     }
 
     if(_resource_panel->inResourcePanel(px, py))

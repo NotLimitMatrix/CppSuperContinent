@@ -7,8 +7,8 @@ GUI_text::GUI_text()
 
 void GUI_text::draw(QPainter *painter, QVector<QString> &vString)
 {
-    // 字符长度不超过21
-    // 汉字长度不超过12
+    // 字符长度不超过52
+    // 汉字长度不超过30
     QRect temp;
     painter->setBrush(Qt::white);
     painter->drawRect(TEXT_START_X, TEXT_START_Y, TEXT_WIDTH, TEXT_HEIGHT);
