@@ -10,11 +10,21 @@ GUI_world::GUI_world(int number, Square *square)
 
     BlockVector.clear();
 
+    int zoning_id = 0;
+    int zoning_number = 0;
     for(int i=0; i<_sum_number; i++)
     {
-        int r = i / _number;
-        int c = i % _number;
-        BlockVector.push_back(new Block(i, c, r, _size));
+        Block *bTemp = new Block(i, i / _number, i % _number, _size);
+        BlockVector.push_back(bTemp);
+        zoning_number = bTemp->getZoningNumber();
+        bTemp->clearZoning();
+        int power_zoning = zoning_number * zoning_number;
+
+        for(int j=0; j<power_zoning; j++)
+        {
+            bTemp->insertZoning(new ZoningSlot(zoning_id, j / zoning_number, j % zoning_number, i));
+            zoning_id++;
+        }
     }
 }
 
@@ -27,7 +37,7 @@ void GUI_world::draw(QPainter *painter)
     {
         painter->setBrush(bTemp->getColor());
 
-        rTemp = bTemp->getRect(WORLD_START_X, WORLD_START_Y);
+        rTemp = bTemp->getRect(_square->x, _square->y);
         painter->drawRect(rTemp);
         bTemp->drawButton(painter);
 
@@ -38,8 +48,8 @@ void GUI_world::draw(QPainter *painter)
 
 bool GUI_world::inWorld(int x, int y)
 {
-    bool bx = (x >= WORLD_START_X && x < WORLD_END_X);
-    bool by = (y >= WORLD_START_Y && y < WORLD_END_Y);
+    bool bx = (x >= _square->x && x < _square->x+_square->width);
+    bool by = (y >= _square->y && y < _square->y+_square->height);
     return (bx && by);
 }
 

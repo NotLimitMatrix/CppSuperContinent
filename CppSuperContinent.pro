@@ -24,6 +24,7 @@ SOURCES += \
     GUI/GUI_text.cpp \
     GUI/GUI_world.cpp \
     GUI/GUI_zoning.cpp \
+    ZoningSlot.cpp \
     main.cpp \
     MainGui.cpp
 
@@ -37,7 +38,8 @@ HEADERS += \
     GUI/GUI_text.h \
     GUI/GUI_world.h \
     GUI/GUI_zoning.h \
-    MainGui.h
+    MainGui.h \
+    ZoningSlot.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

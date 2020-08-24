@@ -2,7 +2,7 @@
 #define BLOCK_H
 
 #include"Core.h"
-#include"GUI/GUI_zoning.h"
+#include"ZoningSlot.h"
 
 class Block
 {
@@ -18,14 +18,15 @@ class Block
     int _zoning_number;
     QColor _color;
 
-    GUI_zoning *_zoning;
-
     QRect solt_left_button;
     QRect solt_right_button;
     QRect solt_left_top;
     QRect solt_right_top;
 
 public:
+    QVector<ZoningSlot*> zVector;
+    int zoning_size;
+
     Block(int id, int r, int c, int size);
     int randomStatus();
     QRect getRect(int startX, int startY);
@@ -33,14 +34,16 @@ public:
     int getX(){return _rc.x();}
     int getY(){return _rc.y();}
     int getId(){return _id;}
-
-    void setZoning(GUI_zoning *z){_zoning = z;}
-    GUI_zoning *getZoning();
+    int getZoningNumber(){return _zoning_number;}
 
     void getDisplay(QVector<QString> *vString);
 
     void setVisible(bool v){ _visable = v;}
     void setCanMove(bool cm){ _can_move = cm;}
+
+    void insertZoning(ZoningSlot* zslot);
+    void clearZoning(){zVector.clear();}
+    void copyZoning(QVector<ZoningSlot*> *recv);
 
     void drawButton(QPainter *painter);
     void drawSoltLeftTop(QPainter *painter);

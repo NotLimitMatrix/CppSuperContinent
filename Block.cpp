@@ -9,10 +9,10 @@ Block::Block(int id, int r, int c, int size)
     _word = BLOCK_WORD[_status_id];
     _modifier = BLOCK_MODIFIER[_status_id];
     _color = BLOCK_STATUS[_status_id];
-    _zoning_number = BLOCK_ZONING[QRandomGenerator::global()->bounded(3)];
-    _size = size;
 
-    setZoning(new GUI_zoning(_zoning_number, _id));
+    _zoning_number = BLOCK_ZONING[QRandomGenerator::global()->bounded(3)];
+
+    _size = size;
 
     int helf_size = _size / 2;
     int pos_x = _rc.x() * _size, pos_y = _rc.y() * _size;
@@ -65,20 +65,34 @@ QColor Block::getColor()
     return _color;
 }
 
-GUI_zoning *Block::getZoning()
-{
-    // 是否可见： 是，显示地块的区划gui；不是，则默认gui
-    if(_visable)
-        return _zoning;
-    else
-        return new GUI_zoning(ZONING_NUMBER, -1);
-}
+
+//GUI_zoning *Block::getZoning()
+//{
+//    // 是否可见： 是，显示地块的区划gui；不是，则默认gui
+//    if(_visable)
+//        return _zoning;
+//    else
+//        return new GUI_zoning(ZONING_NUMBER, -1);
+//}
 
 void Block::getDisplay(QVector<QString> *vString)
 {
     vString->push_back(QString(" [地块] %1: (%2,%3)").arg(_id).arg(_rc.x()).arg(_rc.y()));
     vString->push_back(QString(" [环境] %1: (%2%)").arg(_word).arg(_modifier));
     vString->push_back(QString(" [区划] %1").arg(_zoning_number * _zoning_number));
+}
+
+void Block::insertZoning(ZoningSlot *zslot)
+{
+    zVector.push_back(zslot);
+}
+
+void Block::copyZoning(QVector<ZoningSlot *> *recv)
+{
+    recv->clear();
+    for(ZoningSlot *zTemp : zVector){
+        recv->push_back(zTemp);
+    }
 }
 
 void Block::drawButton(QPainter *painter)

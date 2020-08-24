@@ -3,7 +3,6 @@
 
 #include"Core.h"
 #include"Block.h"
-
 class GUI_world
 {
     int _number;

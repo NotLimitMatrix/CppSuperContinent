@@ -53,17 +53,11 @@ void MainGui::mousePressEvent(QMouseEvent *event)
     update();
 }
 
-void MainGui::resizeEvent(QResizeEvent *event)
-{
-    sizeCollecter->setSquare(this->geometry().width(), this->geometry().height());
-    qDebug() << this->geometry();
-}
-
 void MainGui::display(int px, int py)
 {
     int idTemp;
     Block *bTemp = nullptr;
-    ZSolt *zTemp = nullptr;
+    ZoningSlot *zTemp = nullptr;
 
     _displayText.clear();
     _displayText.push_back(QString("Pos(%1,%2)").arg(px).arg(py));
@@ -72,8 +66,8 @@ void MainGui::display(int px, int py)
     {
         idTemp = _world->getIdWithPos(px, py);
         bTemp = _world->getBlockWithId(idTemp);
-        setZoning(bTemp->getZoning());
         bTemp->getDisplay(&_displayText);
+        bTemp->copyZoning(&_zoning->zVector);
         _displayText.push_back(QString("地图区域"));
     }
 

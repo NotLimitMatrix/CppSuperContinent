@@ -17,12 +17,8 @@ Square *GUI_size::getWorldSquare()
     return new Square(0, 0, height, height);
 }
 
-int GUI_size::worldBlockSize(int number)
+Square *GUI_size::getZoningSquare()
 {
-    return WORLD_SQUARE / number;
-}
-
-int GUI_size::zoningBlockSize(int number)
-{
-    return ZONING_SQUARE / number;
+    int square = (width - height) * 2 / 3;
+    return new Square(height, 0, square, square);
 }
