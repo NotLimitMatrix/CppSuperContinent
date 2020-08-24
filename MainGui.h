@@ -17,8 +17,10 @@ class MainGui : public QMainWindow
 {
     Q_OBJECT
 
+    GUI_size *sizeCollecter = new GUI_size();
+
     int _world_number = WORLD_NUMBER;
-    GUI_world *_world = new GUI_world(_world_number);
+    GUI_world *_world = new GUI_world(_world_number, sizeCollecter->getWorldSquare());
     int _zoning_number = ZONING_NUMBER;
     GUI_zoning *_zoning = new GUI_zoning(_zoning_number, -1);
     GUI_resource_panel *_resource_panel = new GUI_resource_panel;
@@ -36,6 +38,7 @@ public:
 
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void resizeEvent(QResizeEvent *event);
 
     void display(int px, int py);
 };

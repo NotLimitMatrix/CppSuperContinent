@@ -1,10 +1,12 @@
 #include "GUI_world.h"
 
-GUI_world::GUI_world(int number)
+GUI_world::GUI_world(int number, Square *square)
 {
     _number = number;
     _sum_number = _number * _number;
-    _size = WORLD_WIDTH / _number;
+    _square = square;
+
+    _size = _square->width / _number;
 
     BlockVector.clear();
 

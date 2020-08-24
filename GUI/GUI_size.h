@@ -1,13 +1,21 @@
 #ifndef GUI_SIZE_H
 #define GUI_SIZE_H
 
+#include"Core.h"
 
 class GUI_size
 {
     int width;
     int height;
+    int dx = 30;
 public:
-    GUI_size(int windowWidth, int windowHeight);
+    GUI_size();
+
+    Square *getWorldSquare();
+    void setSquare(int w, int h){
+        width = w;
+        height = h;
+    }
 
     int WORLD_SQUARE                = height;
     int MESSAGE_WIDTH               = width - height;
@@ -25,6 +33,13 @@ public:
 
     int WORLD_START_X = 0;
     int WORLD_START_Y = 0;
+    int WORLD_END_X = WORLD_START_X + WORLD_SQUARE;
+    int WORLD_END_Y = WORLD_START_Y + WORLD_SQUARE;
+
+    int ZONING_START_X = WORLD_END_X + 1;
+    int ZONING_START_Y = WORLD_START_Y;
+    int ZONING_END_X = ZONING_START_X + ZONING_SQUARE;
+    int ZONING_END_Y = ZONING_START_Y + ZONING_SQUARE;
 
     int worldBlockSize(int number);
     int zoningBlockSize(int number);

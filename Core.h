@@ -13,6 +13,17 @@
 #include<QRandomGenerator>
 #include<QMouseEvent>
 
+class Square
+{
+public:
+    int x;
+    int y;
+    int width;
+    int height;
+    Square(){x=0;y=0;width=0;height=0;}
+    Square(int _x, int _y, int _width, int _height):x(_x), y(_y), width(_width),height(_height){}
+};
+
 const QColor BLACK              = Qt::black;
 const QColor WHITE              = Qt::white;
 const QColor DEAD_BLOCK         = QColor(255, 105, 180);
@@ -34,8 +45,8 @@ const QString GUI_TITLE         = "Super Continent";
 
 const int WORLD_WIDTH           = 600;
 const int WORLD_HEIGHT          = 600;
-const int WORLD_START_X         = 1;
-const int WORLD_START_Y         = 1;
+const int WORLD_START_X         = 0;
+const int WORLD_START_Y         = 0;
 const int WORLD_END_X           = WORLD_WIDTH + WORLD_START_X;
 const int WORLD_END_Y           = WORLD_HEIGHT + WORLD_START_Y;
 const int WORLD_NUMBER          = 10;

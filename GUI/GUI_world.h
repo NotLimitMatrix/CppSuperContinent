@@ -9,11 +9,12 @@ class GUI_world
     int _number;
     int _sum_number;
     int _size;
+    Square *_square;
 
     QVector<Block*> BlockVector;
 
 public:
-    GUI_world(int number);
+    GUI_world(int number, Square *square);
     void draw(QPainter *painter);
 
     bool inWorld(int x, int y);

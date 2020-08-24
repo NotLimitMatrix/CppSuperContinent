@@ -3,10 +3,16 @@
 MainGui::MainGui(QWidget *parent)
     : QMainWindow(parent)
 {
-    resize(GUI_WIDTH, GUI_HEIGHT);
-    setMinimumSize(GUI_WIDTH, GUI_HEIGHT);
-    setMaximumSize(GUI_WIDTH, GUI_HEIGHT);
+//    QScreen *screen = QGuiApplication::primaryScreen();
+//    QRect displayScreen = screen->availableGeometry();
+//    resize(displayScreen.width(), displayScreen.height());
+//    setMinimumSize(GUI_WIDTH, GUI_HEIGHT);
+//    setMaximumSize(GUI_WIDTH, GUI_HEIGHT);
+
     setWindowTitle(GUI_TITLE);
+    setWindowState(Qt::WindowMaximized);
+
+    qDebug() << this->geometry();
 
     _displayText.push_back("暂无信息");
 }
@@ -45,6 +51,12 @@ void MainGui::mousePressEvent(QMouseEvent *event)
     }
 
     update();
+}
+
+void MainGui::resizeEvent(QResizeEvent *event)
+{
+    sizeCollecter->setSquare(this->geometry().width(), this->geometry().height());
+    qDebug() << this->geometry();
 }
 
 void MainGui::display(int px, int py)

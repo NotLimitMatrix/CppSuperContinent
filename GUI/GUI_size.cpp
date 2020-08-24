@@ -1,9 +1,20 @@
 #include "GUI_size.h"
 
-GUI_size::GUI_size(int windowWidth, int windowHeight)
+#include<QScreen>
+#include<QGuiApplication>
+
+GUI_size::GUI_size()
 {
-    width = windowWidth;
-    height = windowHeight;
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect display = screen->availableGeometry();
+
+    width = display.width() - dx;
+    height = display.height() - dx;
+}
+
+Square *GUI_size::getWorldSquare()
+{
+    return new Square(0, 0, height, height);
 }
 
 int GUI_size::worldBlockSize(int number)
