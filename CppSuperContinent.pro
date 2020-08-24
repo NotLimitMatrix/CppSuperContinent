@@ -20,6 +20,7 @@ SOURCES += \
     GUI/GUI_power_panel.cpp \
     GUI/GUI_research_panel.cpp \
     GUI/GUI_resource_panel.cpp \
+    GUI/GUI_size.cpp \
     GUI/GUI_text.cpp \
     GUI/GUI_world.cpp \
     GUI/GUI_zoning.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     GUI/GUI_power_panel.h \
     GUI/GUI_research_panel.h \
     GUI/GUI_resource_panel.h \
+    GUI/GUI_size.h \
     GUI/GUI_text.h \
     GUI/GUI_world.h \
     GUI/GUI_zoning.h \

@@ -47,11 +47,11 @@ void GUI_resource_panel::updateDailyList()
 
 QString GUI_resource_panel::displayNumber(int number)
 {
-    if(number > 100000000)
-        return "1G";
-
     if(number < 0)
         return "-"+displayNumber(-number);
+
+    if(number > 100000000)
+        return "1G";
 
     if(number<1000)
         return QString::number(number);

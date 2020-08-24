@@ -9,6 +9,7 @@
 #include"GUI/GUI_power_panel.h"
 #include"GUI/GUI_research_panel.h"
 #include"GUI/GUI_text.h"
+#include"GUI/GUI_size.h"
 
 #include"Block.h"
 
