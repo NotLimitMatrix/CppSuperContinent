@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Core/Block.cpp \
+    Core/Player.cpp \
     Core/ZoningSlot.cpp \
     GUI/GUI_MESSAGE.cpp \
     GUI/GUI_PANEL.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     Const/COLOR.h \
     Const/STATIC.h \
     Core/Block.h \
+    Core/Player.h \
     Core/ZoningSlot.h \
     GUI/GUI_MESSAGE.h \
     GUI/GUI_PANEL.h \
