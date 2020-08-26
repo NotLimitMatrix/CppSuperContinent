@@ -1,57 +1,36 @@
-#include "GUI_zoning.h"
+#include "GUI_ZONING.h"
 
-GUI_zoning::GUI_zoning(int number, int belong, Square *square)
+GUI_ZONING::GUI_ZONING(QRect s, Block *b)
 {
-    _number = number;
-    _square = square;
-    _build_dx = _size / 4;
-    _belong_id = belong;
-
-    zVector.clear();
+    square = s;
+    block = b;
 }
 
-void GUI_zoning::draw(QPainter *painter)
+void GUI_ZONING::draw(QPainter *painter)
 {
-    if(zVector.empty())
-    {
-        painter->setBrush(WHITE);
+    if (block != nullptr) {
+        int zoningSlotNumber = block->getZoningNumber();
+        int size = square.width() / zoningSlotNumber;
+        QPoint point;
+
         painter->setPen(BLACK);
-        painter->drawRect(QRect(_square->x, _square->y, _square->width, _square->height));
-    }
-    else
-    {
-        for(ZoningSlot *zTemp : zVector)
-        {
-            painter->setBrush(zTemp->getBackGroundColor());
-            painter->drawRect(zTemp->getRect(_square->x, _square->y, 10));
-    //        painter->setBrush(zTemp->getBuildColor());
-
-    //        painter->setPen(zTemp->getBuildColor());
-    //        painter->drawRect(zTemp->getBuildRect(_square->x, _square->y, _size, _build_dx));
-            painter->setPen(BLACK);
+        for (ZoningSlot *zTemp : block->usingZoningSlotVector()) {
+            painter->setBrush(WHITE);
+            point = zTemp->getPosition();
+            painter->drawRect(
+                QRect(square.x() + size * point.x(), square.y() + size * point.y(), size, size));
         }
+        painter->setBrush(WHITE);
+    } else {
+        painter->setPen(BLACK);
+        painter->drawRect(QRect(square.x(), square.y(), square.width(), square.height()));
+        painter->setBrush(WHITE);
     }
 }
 
-
-bool GUI_zoning::inZoning(int x, int y)
+bool GUI_ZONING::posIn(int x, int y)
 {
-    bool bx = (x >= _square->x && x < _square->x+_square->width);
-    bool by = (y >= _square->y && y < _square->y+_square->height);
-    return (bx && by);
-}
-
-int GUI_zoning::getIdWithPos(int x, int y)
-{
-    int ix = (x - _square->x) / _size;
-    int iy = (y - _square->y) / _size;
-    return iy * _number + ix;
-}
-
-ZoningSlot *GUI_zoning::getSoltWithId(int id)
-{
-    for(ZoningSlot *zTemp : zVector)
-        if(zTemp->getId() == id)
-            return zTemp;
-    return nullptr;
+    bool bx = (x > square.x()) && (x < square.x() + square.width());
+    bool by = (y > square.y()) && (x < square.y() + square.height());
+    return bx && by;
 }

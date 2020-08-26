@@ -16,30 +16,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Block.cpp \
-    GUI/GUI_power_panel.cpp \
-    GUI/GUI_research_panel.cpp \
-    GUI/GUI_resource_panel.cpp \
-    GUI/GUI_size.cpp \
-    GUI/GUI_text.cpp \
-    GUI/GUI_world.cpp \
-    GUI/GUI_zoning.cpp \
-    ZoningSlot.cpp \
+    Core/Block.cpp \
+    Core/ZoningSlot.cpp \
+    GUI/GUI_MESSAGE.cpp \
+    GUI/GUI_PANEL.cpp \
+    GUI/GUI_WORLD.cpp \
+    GUI/GUI_ZONING.cpp \
+    GUI/SizeManager.cpp \
     main.cpp \
-    MainGui.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    Block.h \
-    Core.h \
-    GUI/GUI_power_panel.h \
-    GUI/GUI_research_panel.h \
-    GUI/GUI_resource_panel.h \
-    GUI/GUI_size.h \
-    GUI/GUI_text.h \
-    GUI/GUI_world.h \
-    GUI/GUI_zoning.h \
-    MainGui.h \
-    ZoningSlot.h
+    Const/COLOR.h \
+    Const/STATIC.h \
+    Core/Block.h \
+    Core/ZoningSlot.h \
+    GUI/GUI_MESSAGE.h \
+    GUI/GUI_PANEL.h \
+    GUI/GUI_WORLD.h \
+    GUI/GUI_ZONING.h \
+    GUI/SizeManager.h \
+    mainwindow.h
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

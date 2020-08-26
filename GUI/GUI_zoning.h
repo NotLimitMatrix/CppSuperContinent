@@ -1,29 +1,19 @@
 #ifndef GUI_ZONING_H
 #define GUI_ZONING_H
+#include <Core/Block.h>
+#include <QRect>
+#include <QString>
 
-#include"Core.h"
-#include"ZoningSlot.h"
-
-class GUI_zoning
+class GUI_ZONING
 {
-    int _number;
-    int _sum_number;
-    int _size;
-    int _build_dx;
-    Square *_square;
-    int _belong_id;
+    QRect square;
+    Block *block;
 
 public:
-    QVector<ZoningSlot*> zVector;
-
-    GUI_zoning(int number, int belong, Square *square);
+    GUI_ZONING(QRect s, Block *b);
+    void setBlock(Block *b) { block = b; }
     void draw(QPainter *painter);
-    int getSize(){return _size;}
-
-    bool inZoning(int x, int y);
-    int getIdWithPos(int x, int y);
-    ZoningSlot *getSoltWithId(int id);
-
+    bool posIn(int x, int y);
 };
 
 #endif // GUI_ZONING_H

@@ -1,0 +1,3 @@
+#ifndef BLOCK_STATIC_H
+#define BLOCK_STATIC_H
+#endif // BLOCK_STATIC_H

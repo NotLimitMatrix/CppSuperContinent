@@ -1,69 +1,52 @@
-#include "GUI_world.h"
+#include "GUI_WORLD.h"
 
-GUI_world::GUI_world(int number, Square *square)
+GUI_WORLD::GUI_WORLD(QRect sqe, int number)
 {
-    _number = number;
-    _sum_number = _number * _number;
-    _square = square;
+    square = sqe;
+    blockNumber = number;
 
-    _size = _square->width / _number;
-
-    BlockVector.clear();
-
-    int zoning_id = 0;
-    int zoning_number = 0;
-    for(int i=0; i<_sum_number; i++)
-    {
-        Block *bTemp = new Block(i, i / _number, i % _number, _size);
-        BlockVector.push_back(bTemp);
-        zoning_number = bTemp->getZoningNumber();
-        bTemp->clearZoning();
-        int power_zoning = zoning_number * zoning_number;
-
-        for(int j=0; j<power_zoning; j++)
-        {
-            bTemp->insertZoning(new ZoningSlot(zoning_id, j / zoning_number, j % zoning_number, i));
-            zoning_id++;
+    bVector.clear();
+    for (int i = 0; i < blockNumber; i++)
+        for (int j = 0; j < blockNumber; j++) {
+            bVector.push_back(new Block(i * number + j, QPoint(j, i)));
         }
-    }
 }
 
-void GUI_world::draw(QPainter *painter)
+void GUI_WORLD::draw(QPainter *painter)
 {
-    QRect rTemp;
-    QString stringTemp;
+    int size = square.width() / blockNumber;
+    QPoint point;
+    QRect rectTemp;
 
-    for(Block* bTemp : BlockVector)
-    {
+    painter->setPen(BLACK);
+    for (Block *bTemp : bVector) {
         painter->setBrush(bTemp->getColor());
-
-        rTemp = bTemp->getRect(_square->x, _square->y);
-        painter->drawRect(rTemp);
-        bTemp->drawButton(painter);
-
-        //stringTemp = QString("%3(%1,%2)").arg(bTemp->getX()).arg(bTemp->getY()).arg(bTemp->getId());
-        //painter->drawText(rTemp, Qt::AlignCenter, stringTemp);
+        point = bTemp->getPosition();
+        rectTemp = QRect(square.x() + size * point.x(), square.y() + size * point.y(), size, size);
+        painter->drawRect(rectTemp);
+        painter->drawText(rectTemp, Qt::AlignCenter, QString("%1,%2").arg(point.x()).arg(point.y()));
     }
+    painter->setBrush(WHITE);
 }
 
-bool GUI_world::inWorld(int x, int y)
+bool GUI_WORLD::posIn(int x, int y)
 {
-    bool bx = (x >= _square->x && x < _square->x+_square->width);
-    bool by = (y >= _square->y && y < _square->y+_square->height);
-    return (bx && by);
+    bool bx = (x > square.x()) && (x < square.x() + square.width());
+    bool by = (y > square.y()) && (x < square.y() + square.height());
+    return bx && by;
 }
 
-int GUI_world::getIdWithPos(int x, int y)
+Block *GUI_WORLD::getBlockWithPosition(int x, int y)
 {
-    int ix = x / _size;
-    int iy = y / _size;
-    return iy * _number + ix;
-}
+    int size = square.width() / blockNumber;
+    int r = x / size;
+    int c = y / size;
+    QPoint point;
 
-Block* GUI_world::getBlockWithId(int id)
-{
-    for(Block *bTemp : BlockVector)
-        if(bTemp->getId() == id)
+    for (Block *bTemp : bVector) {
+        point = bTemp->getPosition();
+        if (point.x() == r && point.y() == c)
             return bTemp;
+    }
     return nullptr;
 }
