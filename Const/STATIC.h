@@ -17,6 +17,8 @@ const int BLOCK_ZONING[5] = {4, 5, 6};
 
 const QString PANEL_TITLE[7] = {"能量", "矿物", "食物", "物资", "合金", "科研", "军事"};
 
+const int TICK_FLOW = 500; // 毫秒
+
 class Methods
 {
 public:
@@ -39,6 +41,11 @@ public:
     {
         painter->drawRect(rect);
         painter->drawText(rect, Qt::AlignCenter, s);
+    }
+    static QString dateFromTimeNumber(int number)
+    {
+        int all_months = number / 30;
+        return QString("%1-%2-%3").arg(all_months / 12 + 3000).arg(all_months % 12).arg(number % 30);
     }
 };
 

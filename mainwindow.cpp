@@ -1,16 +1,21 @@
 #include "mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("Super Continent");
+    setWindowTitle(superContinentTitle);
     setWindowState(Qt::WindowMaximized);
 
-    world = new GUI_WORLD(sizeManager->getWorldSquare(), 10);
+    world = new GUI_WORLD(sizeManager->getWorldSquare(), 30);
     zoning = new GUI_ZONING(sizeManager->getZoningSquare(), nullptr);
     panel = new GUI_PANEL(sizeManager->getPanelSquare());
     message = new GUI_MESSAGE(sizeManager->getMessageSquare());
+
+    timeFlower = new QTimer(this);
+    timeFlower->start();
+    timeFlower->setInterval(TICK_FLOW);
+
+    connect(timeFlower, SIGNAL(timeout()), this, SLOT(timeflowTitle()));
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
@@ -38,6 +43,34 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             zoning->setBlock(world->getBlockWithPosition(posX, posY));
         }
     }
+    if (b == Qt::RightButton) {
+        world = new GUI_WORLD(sizeManager->getWorldSquare(), 10);
+    }
 
+    update();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_Space: {
+        isPause = !isPause;
+        break;
+    }
+    }
+}
+
+void MainWindow::timeflowTitle()
+{
+    if (isPause) {
+        superContinentTitle = QString("Super Continent [%1] 暂停")
+                                  .arg(Methods::dateFromTimeNumber(timeCounter));
+    } else {
+        timeCounter++;
+        superContinentTitle = QString("Super Continent [%1]")
+                                  .arg(Methods::dateFromTimeNumber(timeCounter));
+    }
+
+    setWindowTitle(superContinentTitle);
     update();
 }
