@@ -24,9 +24,21 @@ void GUI_WORLD::draw(QPainter *painter)
         point = bTemp->getPosition();
         rectTemp = QRect(square.x() + size * point.x(), square.y() + size * point.y(), size, size);
         painter->drawRect(rectTemp);
-        painter->drawText(rectTemp, Qt::AlignCenter, QString("%1,%2").arg(point.x()).arg(point.y()));
+        if (bTemp->getPlayer()) {
+            painter->setBrush(BLACK);
+            drawPlayer(painter, rectTemp.x(), rectTemp.y(), size);
+        }
     }
     painter->setBrush(WHITE);
+}
+
+void GUI_WORLD::drawPlayer(QPainter *painter, int x, int y, int size)
+{
+    int d = size / 4;
+    int r = d / 2;
+    int half = size / 2;
+
+    painter->drawEllipse(QRect(x + half - r, y + half - r, d, d));
 }
 
 bool GUI_WORLD::posIn(int x, int y)

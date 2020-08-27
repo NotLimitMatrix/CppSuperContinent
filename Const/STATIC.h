@@ -17,7 +17,7 @@ const int BLOCK_ZONING[5] = {4, 5, 6};
 
 const QString PANEL_TITLE[7] = {"能量", "矿物", "食物", "物资", "合金", "科研", "军事"};
 
-const int TICK_FLOW = 500; // 毫秒
+const int TICK_FLOW = 250; // 毫秒
 
 class Methods
 {
