@@ -1,7 +1,7 @@
 #ifndef GUI_MENU_H
 #define GUI_MENU_H
 
-#include "NewGameDialog.h"
+#include "Dialog/NewGameDialog.h"
 #include <QMenu>
 #include <QMenuBar>
 #include <QWidget>

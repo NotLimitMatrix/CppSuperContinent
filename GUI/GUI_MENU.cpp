@@ -20,7 +20,8 @@ void GUI_MENU::startGameMenu()
 
     QAction *createConnection = new QAction("网络连接", widgetParent);
     startGame->addAction(createConnection);
-    QObject::connect(createConnection, SIGNAL(triggered()), newGameDialog, SLOT(show()));
+    //QObject::connect(createConnection, SIGNAL(triggered()), newGameDialog, SLOT(show()));
+    QObject::connect(createConnection, &QAction::triggered, newGameDialog, &QWidget::show);
 
     //    QAction *singleGame = new QAction("单机游戏", parent);
     //    startGame->addAction(singleGame);

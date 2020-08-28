@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     timeFlower->start();
     timeFlower->setInterval(TICK_FLOW);
 
-    connect(timeFlower, SIGNAL(timeout()), this, SLOT(timeflowTitle()));
+    connect(timeFlower, &QTimer::timeout, this, &MainWindow::timeflowTitle);
 }
 
 void MainWindow::paintEvent(QPaintEvent *)

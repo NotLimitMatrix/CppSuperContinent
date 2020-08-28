@@ -20,6 +20,7 @@ class NewGameDialog : public QWidget
 public:
     NewGameDialog();
     void setUi();
+    void pushButtonSubmit();
 };
 
 #endif // NEWGAMEDIALOG_H
