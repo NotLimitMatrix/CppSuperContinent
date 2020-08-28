@@ -4,6 +4,7 @@
 #include <QFormLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QString>
 #include <QWidget>
 
@@ -14,6 +15,7 @@ class NewGameDialog : public QWidget
     QLineEdit *nickname = new QLineEdit(this);
     QLineEdit *host = new QLineEdit(this);
     QLineEdit *port = new QLineEdit(this);
+    QPushButton *submit = new QPushButton(this);
 
 public:
     NewGameDialog();

@@ -28,7 +28,7 @@ SOURCES += \
     GUI/GUI_WORLD.cpp \
     GUI/GUI_ZONING.cpp \
     GUI/SizeManager.cpp \
-    NewGameDialog.cpp \
+    GUI/Dialog/NewGameDialog.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -48,7 +48,7 @@ HEADERS += \
     GUI/GUI_WORLD.h \
     GUI/GUI_ZONING.h \
     GUI/SizeManager.h \
-    NewGameDialog.h \
+    GUI/Dialog/NewGameDialog.h \
     mainwindow.h
 
 

@@ -3,6 +3,9 @@
 NewGameDialog::NewGameDialog()
 {
     setWindowTitle(title);
+    submit->setText("开始");
+
+    setUi();
 }
 
 void NewGameDialog::setUi()
@@ -12,4 +15,5 @@ void NewGameDialog::setUi()
     layout->addRow(QString("帝国名称"), nickname);
     layout->addRow(QString("服务器IP"), host);
     layout->addRow(QString("服务器端口"), port);
+    layout->addRow(QString(""), submit);
 }
