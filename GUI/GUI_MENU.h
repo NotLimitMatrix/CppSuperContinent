@@ -19,7 +19,7 @@ public:
 
     void configNetWorkGame();
 
-    NewGameDialog *newGameDialog = new NewGameDialog();
+    NewGameDialog *newGameDialog;
 };
 
 #endif // GUI_MENU_H

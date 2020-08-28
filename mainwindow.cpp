@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -73,4 +73,9 @@ void MainWindow::timeflowTitle()
 
     setWindowTitle(superContinentTitle);
     update();
+}
+
+void MainWindow::receiveNewGameData(QString name, QString host, QString port)
+{
+    qDebug() << name << host << port;
 }

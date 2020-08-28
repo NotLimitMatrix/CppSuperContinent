@@ -10,6 +10,7 @@
 
 class NewGameDialog : public QWidget
 {
+    QWidget *widgetParent;
     QString title = QString("游戏配置");
 
     QLineEdit *nickname = new QLineEdit(this);
@@ -18,9 +19,11 @@ class NewGameDialog : public QWidget
     QPushButton *submit = new QPushButton(this);
 
 public:
-    NewGameDialog();
+    NewGameDialog(QWidget *parent);
     void setUi();
     void pushButtonSubmit();
+
+    void sendNewGameData(QString, QString, QString);
 };
 
 #endif // NEWGAMEDIALOG_H

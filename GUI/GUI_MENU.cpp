@@ -11,6 +11,8 @@ GUI_MENU::GUI_MENU(QWidget *parent, int width, int height)
     menuBar->setGeometry(0, 0, width, height);
     widgetParent = parent;
 
+    newGameDialog = new NewGameDialog(parent);
+
     startGameMenu();
 }
 

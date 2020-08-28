@@ -1,7 +1,8 @@
 #include "NewGameDialog.h"
 
-NewGameDialog::NewGameDialog()
+NewGameDialog::NewGameDialog(QWidget *parent)
 {
+    widgetParent = parent;
     setWindowTitle(title);
     submit->setText("开始");
     QObject::connect(submit, &QPushButton::clicked, this, &NewGameDialog::pushButtonSubmit);

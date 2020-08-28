@@ -41,5 +41,6 @@ public:
     void keyPressEvent(QKeyEvent *event);
 public slots:
     void timeflowTitle();
+    void receiveNewGameData(QString name, QString host, QString port);
 };
 #endif // MAINWINDOW_H
