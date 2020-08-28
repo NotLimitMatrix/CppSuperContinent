@@ -15,6 +15,10 @@ class SizeManager
 public:
     SizeManager();
 
+    int getWidth() { return width; }
+    int getHeight() { return height; }
+    int getDX() { return dx; }
+
     QRect getWorldSquare();
     QRect getZoningSquare();
     QRect getPanelSquare();

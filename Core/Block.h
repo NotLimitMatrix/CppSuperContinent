@@ -21,17 +21,20 @@ class Block
     int pioneerId = 1;
     int armyId = 1;
     int playerId = 0;
+    bool visible = false;
 
 public:
     Block(int i, QPoint p);
 
-    QColor getColor() { return color; }
+    QColor getColor();
     QPoint getPosition() { return point; }
     int getZoningNumber() { return zoningNumber; }
 
     bool getPionner() { return bool(pioneerId); }
     bool getArmy() { return bool(armyId); }
     bool getPlayer() { return bool(playerId); }
+
+    void setVisible(bool b) { visible = b; }
 
     QVector<ZoningSlot *> usingZoningSlotVector() { return zVector; }
 };

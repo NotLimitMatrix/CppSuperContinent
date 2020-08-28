@@ -22,6 +22,7 @@ SOURCES += \
     Core/JsonParser.cpp \
     Core/Player.cpp \
     Core/ZoningSlot.cpp \
+    GUI/GUI_MENU.cpp \
     GUI/GUI_MESSAGE.cpp \
     GUI/GUI_PANEL.cpp \
     GUI/GUI_WORLD.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     Core/JsonParser.h \
     Core/Player.h \
     Core/ZoningSlot.h \
+    GUI/GUI_MENU.h \
     GUI/GUI_MESSAGE.h \
     GUI/GUI_PANEL.h \
     GUI/GUI_WORLD.h \

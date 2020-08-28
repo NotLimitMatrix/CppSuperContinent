@@ -1,5 +1,5 @@
 #include "Block.h"
-#include <QDebug>
+
 Block::Block(int i, QPoint p)
 {
     id = i;
@@ -12,4 +12,12 @@ Block::Block(int i, QPoint p)
         for (int j = 0; j < zoningNumber; j++) {
             zVector.push_back(new ZoningSlot(id, QPoint(j, i)));
         }
+}
+
+QColor Block::getColor()
+{
+    if (visible)
+        return color;
+    else
+        return Qt::gray;
 }

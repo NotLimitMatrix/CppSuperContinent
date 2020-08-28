@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "GUI/GUI_MENU.h"
 #include "GUI/GUI_MESSAGE.h"
 #include "GUI/GUI_PANEL.h"
 #include "GUI/GUI_WORLD.h"
@@ -23,6 +24,9 @@ class MainWindow : public QMainWindow
     GUI_ZONING *zoning;
     GUI_PANEL *panel;
     GUI_MESSAGE *message;
+
+    GUI_MENU *menuBar = new GUI_MENU(this, sizeManager->getWidth(), sizeManager->getDX());
+
     QString superContinentTitle = QString("Super Continent");
 
     QTimer *timeFlower;

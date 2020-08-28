@@ -4,6 +4,7 @@ GUI_WORLD::GUI_WORLD(QRect sqe, int number)
 {
     square = sqe;
     blockNumber = number;
+    playerMaxNumber = number / 2;
 
     bVector.clear();
     for (int i = 0; i < blockNumber; i++)

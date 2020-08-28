@@ -10,6 +10,7 @@ class GUI_WORLD
 {
     QRect square;
     int blockNumber;
+    int playerMaxNumber;
 
     QVector<Block *> bVector;
 

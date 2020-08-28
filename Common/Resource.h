@@ -6,7 +6,7 @@ class Resource
 {
     QString name;
     QString material;
-    int rate;
+    int rate; // the number that using material for this resource
 
 public:
     Resource();
