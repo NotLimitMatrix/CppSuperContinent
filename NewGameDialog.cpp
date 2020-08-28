@@ -1,0 +1,15 @@
+#include "NewGameDialog.h"
+
+NewGameDialog::NewGameDialog()
+{
+    setWindowTitle(title);
+}
+
+void NewGameDialog::setUi()
+{
+    QFormLayout *layout = new QFormLayout(this);
+
+    layout->addRow(QString("帝国名称"), nickname);
+    layout->addRow(QString("服务器IP"), host);
+    layout->addRow(QString("服务器端口"), port);
+}
